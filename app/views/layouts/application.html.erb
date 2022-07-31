@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Maikutsu</title>
+    <title>まいくつ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <div class="container">
+    <body>
+      <header class="shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="row">
+            <div class="col-md-2">
+             <!--ながのCAKEロゴ-->
+              <a class="navbar-brand px-5 pe-3" alt="ながのCAKEロゴ" href="/"><%= image_tag("no_image.jpg") %></a>
+            </div>
+  
 
   <body>
     <%= yield %>

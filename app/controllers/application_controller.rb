@@ -1,3 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception #CSRF対策(クロスサイトリクエストフォージェリ)
+  
+  
 end
