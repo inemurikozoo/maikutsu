@@ -1,0 +1,31 @@
+{
+  "name": "maikutsu",
+  "version": "1.0.0",
+  "description": "まいくつ",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/inemurikozoo/maikutsu.git",
+  "author": "inemurikozoo <100814669+inemurikozoo@users.noreply.github.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inemurikozoo/maikutsu/issues"
+  },
+  "homepage": "https://github.com/inemurikozoo/maikutsu#readme",
+  "dependencies": {
+    "@rails/webpacker": "5.4.3",
+    "bootstrap": "4.5",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
+}

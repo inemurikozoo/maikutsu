@@ -3,9 +3,9 @@ class CreateItems < ActiveRecord::Migration[5.2]
     create_table :items do |t|
       
       t.string :name,             null: false, default: ""
-      t.string :preserve_method,  null: false, default: ""
-      t.string :how_to_choose,    null: false, default: ""
-      t.string :limit,            null: false, default: ""
+      t.string :preserve_method,               default: ""
+      t.string :how_to_choose,                 default: ""
+      t.string :limit,                         default: ""
       t.timestamps
     end
   end
