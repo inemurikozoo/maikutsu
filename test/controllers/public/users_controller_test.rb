@@ -1,7 +1,23 @@
 require "test_helper"
 
 class Public::UsersControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get show" do
+    get public_users_show_url
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get public_users_edit_url
+    assert_response :success
+  end
+
+  test "should get update" do
+    get public_users_update_url
+    assert_response :success
+  end
+
+  test "should get exit" do
+    get public_users_exit_url
+    assert_response :success
+  end
 end
