@@ -76,6 +76,7 @@ end
   User.create!(
     email: "test#{n + 1}@test.com",
     name: "まいくつちゃん#{n + 1}",
-    password: "123456"
+    password: "123456",
+    is_active: true
   )
 end

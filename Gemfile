@@ -53,3 +53,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'webpacker', '~> 5.0'
+gem 'kaminari', '~> 1.2.1'

@@ -27,9 +27,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
+    patch 'users/switch/:id' => 'users#switch'
     get 'items/index'
     get 'items/show'
   end

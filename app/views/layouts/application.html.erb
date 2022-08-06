@@ -133,6 +133,7 @@
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
+    <% notice %>
     <main class="mb-auto">
 
       <%= yield %>

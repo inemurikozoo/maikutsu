@@ -1,14 +1,15 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all 
+    @users = User.page(params[:page])
   end
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
+  def switch
+    @user = User.find(params[:id])
+    if @user.is_active == true
+      @user.update(is_active: false)
+    else
+      @user.update(is_active: true)
+    end
+    redirect_to request.referer, notice: "更新しました"
   end
 end
