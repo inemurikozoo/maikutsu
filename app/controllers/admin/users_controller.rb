@@ -7,9 +7,16 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.is_active == true
       @user.update(is_active: false)
+      redirect_to request.referer, notice: "退会に変更しました。"
     else
       @user.update(is_active: true)
+      redirect_to request.referer, notice: "有効に変更しました。"
     end
-    redirect_to request.referer, notice: "更新しました"
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name)
   end
 end

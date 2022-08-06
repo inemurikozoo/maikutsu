@@ -12,16 +12,9 @@ Rails.application.routes.draw do
 
 
     get root to: 'public/homes#top'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
+    resources :users
     get 'users/exit'
-    get 'items/index'
-    get 'items/show'
-    get 'items/create'
-    get 'items/edit'
-    get 'items/update'
-    get 'items/destroy'
+    resources :items
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
 
