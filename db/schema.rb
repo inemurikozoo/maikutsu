@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_204411) do
+ActiveRecord::Schema.define(version: 2022_08_08_091846) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_204411) do
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color_code", default: ""
   end
 
   create_table "items", force: :cascade do |t|
@@ -58,6 +59,8 @@ ActiveRecord::Schema.define(version: 2022_08_04_204411) do
     t.string "limit", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "category_id"
   end
 
   create_table "sub_items", force: :cascade do |t|

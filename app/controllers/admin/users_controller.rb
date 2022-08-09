@@ -3,20 +3,27 @@ class Admin::UsersController < ApplicationController
     @users = User.page(params[:page])
   end
 
-  def switch
+  def show
     @user = User.find(params[:id])
-    if @user.is_active == true
-      @user.update(is_active: false)
-      redirect_to request.referer, notice: "退会に変更しました。"
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_path(@user.id), notice: "会員情報を更新しました"
     else
-      @user.update(is_active: true)
-      redirect_to request.referer, notice: "有効に変更しました。"
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :email, :is_active)
   end
 end

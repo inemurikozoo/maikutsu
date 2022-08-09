@@ -1,27 +1,28 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception #CSRF対策(クロスサイトリクエストフォージェリ)
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   protected
-  
-  
-  
+
+
+
   def configure_permitted_parameters
-    devise_paraneter_sanitizer.permit(:sign_up, keys[:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
-  
+
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admin_root_path
+      admin_users_path
     when Customer
       customers_path
     end
   end
-  
+
   def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :customer
+    if resource_or_scope == :user
       root_path
-    elsif resource_or_scope = :admin
+    elsif resource_or_scope == :admin
       new_admin_session_path
     end
   end
