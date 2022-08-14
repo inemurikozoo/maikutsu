@@ -26,13 +26,12 @@
                 カテゴリID
               </th>
               <th>
-                カテゴリ名
+                カテゴリ表示
               </th>
               <th>
                 ボタンの色
               </th>
               <th>
-                登録中のもの
               </th>
             </tr>
             <tr>
@@ -45,7 +44,9 @@
                 </div>
               </td>
               <td>
-                <%= category.color_code %>
+                <div id="colorpicker">
+                  <%= category.color_code %>
+                </div>
               </td>
               <td>
                 <%= link_to "編集する", edit_admin_category_path(category.id), class:"btn btn-success" %>
@@ -54,6 +55,15 @@
           </thead>
         </table>
     <% end %>
+    <script>
+      const colorpicker = document.getElementById('colorpicker')
+      const Button = document.getElementById('Button');
+      Button.style.backgroundcolor = colorpicker.textCoent;
+      
+      
+    </script>
+    
+    
       </div>
   </div>
 </div>
