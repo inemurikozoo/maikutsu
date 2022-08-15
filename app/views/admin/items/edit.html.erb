@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 class="mt-3 text-center bg-success border border-secondary">もの編集</h1>
+  <div class="col-10-md">
+    <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch, local: true do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th>
+          ものの名前
+        </th>
+        <td>
+          <%= f.text_field :name %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          カテゴリ
+        </th>
+        <td>
+          <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          保存方法
+        </th>
+        <td>
+            <%= f.text_area :preserve_method, class: 'form_control', cols: "50" %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          選び方
+        </th>
+        <td>
+            <%= f.text_area :how_to_choose, class: 'form_control', cols: "50" %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          使用期限（目安）
+        </th>
+        <td>
+            <%= f.text_area :limit, class: 'form_control', cols: "50" %>
+        </td>
+      </tr>
+    </table>
+    <%= f.submit "変更を保存する", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

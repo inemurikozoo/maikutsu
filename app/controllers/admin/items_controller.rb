@@ -15,21 +15,33 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
     @categories = Category.all
-    @category = @item.category
+  end
+
+  def confirm
+    @item = Item.find(params[:id])
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_items_index_path, notice: "内容を更新しました"
+      redirect_to admin_item_path(@item.id), notice: "内容を更新しました"
     else
-      render :edit
+      render :edit,notice: "更新に失敗しました"
     end
   end
-
-  def edit
+    
+  def destroy
     @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to admin_items_path, notice: "ものを削除しました"
+    else
+      render :show, notice: "ものの削除に失敗しました"
+    end
   end
 
   private
