@@ -39,12 +39,12 @@
                 <%= category.id %>
               </td>
               <td>
-                <div id="Button">
+                <div class="Button">
                   <%= category.name %>
                 </div>
               </td>
               <td>
-                <div id="colorpicker">
+                <input type="hidden" id="colorCode" class="colorCode" value="<%= @colorCode %>">
                   <%= category.color_code %>
                 </div>
               </td>
@@ -56,9 +56,10 @@
         </table>
     <% end %>
     <script>
-      
-      
-      
+      window.onload = function(){
+        const colorCode = document.getElementByClassName('colorCode').value;
+        document.getElementById('Button').style.backgroundColor = colorCode;
+      }
     </script>
     
     

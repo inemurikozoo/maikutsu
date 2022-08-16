@@ -10,11 +10,11 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @categories = Category.all
   end
 
   def show
     @item = Item.find(params[:id])
+    @colorCode = @item.category.color_code
   end
 
   def edit
@@ -34,9 +34,10 @@ class Admin::ItemsController < ApplicationController
       render :edit,notice: "更新に失敗しました"
     end
   end
-    
+
   def destroy
     @item = Item.find(params[:id])
+    binding.pry
     if @item.destroy
       redirect_to admin_items_path, notice: "ものを削除しました"
     else
@@ -47,6 +48,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :preserve_method, :how_to_use, :limit)
+    params.require(:item).permit(:name, :category_id, :preserve_method, :how_to_choose, :limit)
   end
 end

@@ -17,6 +17,7 @@
         </th>
         <td>
           <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+          <input type="hidden" id="colorCode" class="colorCode"
         </td>
       </tr>
       <tr>
