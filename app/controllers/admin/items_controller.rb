@@ -4,8 +4,9 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new
-    @item.save(item_params)
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to admin_items_path, notice: "新規ものを作成しました"
   end
 
   def index

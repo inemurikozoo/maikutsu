@@ -6,7 +6,7 @@
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
-
+    <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -83,7 +83,7 @@
                           <%= link_to "", class: 'nav-link' do %>投稿一覧<% end %><!-- 投稿の一覧　-->
                         </li>
                         <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link'  do %>ログアウト<% end %>
+                          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>ログアウト<% end %>
                         </li>
                       </ul>
                     </div>
