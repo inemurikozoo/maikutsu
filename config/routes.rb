@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
 #管理者用deviseルート
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
 
 #会員用
     get root to: 'public/homes#top'
-    resources :users
+    resources :users, only: [:show, :edit, :update]
     get 'users/exit'
     resources :items
     get 'homes/top'
