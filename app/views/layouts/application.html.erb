@@ -30,21 +30,17 @@
             <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
                   <!--  会員のログイン時に表示されるメニュー　-->
                 <% if user_signed_in? %>
-              <div class="col-3">
-                <p class="header-user-name">
-                  <%= current_user.name %>さんのページ
-                </p>
-              </div>
+
                   <div class="col">
                     <div class="row">
                       <div class="col-12">
                         <div class="btn-group px-2.5">
                           <ul class="navbar list-unstyled">
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to "", class: 'nav-link' do %> もの登録<% end %><!--ものの登録ショートカット-->
+                              <%= link_to new_subitem_path, class: 'nav-link' do %> こもの登録<% end %><!--ものの登録ショートカット-->
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to "", class: 'nav-link' do %> もの一覧<% end %><!--ものの一覧-->
+                              <%= link_to subitems_path, class: 'nav-link' do %> こもの一覧<% end %><!--ものの一覧-->
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
                               <%= link_to "", class: 'nav-link' do %> 在庫一覧<% end %><!--在庫の一覧-->

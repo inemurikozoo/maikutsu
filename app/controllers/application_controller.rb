@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_users_path
     when User
-      user_path(current_user)
+      user_path
     end
   end
 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     end
   end
-  
+
   protected
 
   def configure_permitted_parameters

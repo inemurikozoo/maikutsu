@@ -38,7 +38,6 @@ class Admin::ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    binding.pry
     if @item.destroy
       redirect_to admin_items_path, notice: "ものを削除しました"
     else
