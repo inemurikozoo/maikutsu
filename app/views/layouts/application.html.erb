@@ -46,10 +46,10 @@
                               <%= link_to "", class: 'nav-link' do %> 在庫一覧<% end %><!--在庫の一覧-->
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                              <%= link_to "", class: 'nav-link' do %> 買い物メモ<% end %><!--買いたいものの一覧-->
+                              <%= link_to shoppingmemos_index_path, class: 'nav-link' do %> 買い物メモ<% end %><!--買いたいものの一覧-->
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                              <%= link_to "", class: 'nav-link' do %> ログアウト<% end %><!--ログアウト-->
+                              <%= link_to destroy_user_session_path, class: 'nav-link' do %> ログアウト<% end %><!--ログアウト-->
                             </li>
                           </ul>
                         </div>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
 #管理者用deviseルート
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -21,11 +19,18 @@ Rails.application.routes.draw do
     get 'users' => 'public/users#show', as: 'user'
     get 'users/edit' => 'public/users#edit', as: 'user_edit'
     patch 'users' => 'public/users#update'
-    resources :subitems, only: [:index, :create, :new, :edit, :show, :update, :destroy]
-    get 'users/exit'
+    get 'users/exit' => 'public/users#exit', as: 'user_exit'
+    get 'subitems' => 'public/subitems#index', as: 'subitems'
+    get 'subitems/new' => 'public/subitems#new', as: 'new_subitem'
+    post 'subitems' => 'public/subitems#create', as: 'create_subitem'
+    get 'subitems/:id/edit' => 'public/subitems#edit', as: 'edit_subitem'
+    get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
+    patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
+    delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
     get 'shoppingmemos/index'
+
 
 #管理者用
   namespace :admin do

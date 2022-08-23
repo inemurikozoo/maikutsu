@@ -4,13 +4,8 @@ class Public::SubitemsController < ApplicationController
   end
   
   def create
-    @sub_item = SubItem.new(sub_item_params)
-    @sub_item.build_unit
-    if @sub_item.save
-      redirect_to subitem_path(@sub_item.id), notice: "こものを作成しました"
-    else
-      render :new, notice: "こものの作成に失敗しました"
-    end
+    form = SubItemRegistrationForm.new(params_permitted)
+    SubItem.create!(form.params)
   end
   
   def index
@@ -40,8 +35,8 @@ class Public::SubitemsController < ApplicationController
   
   private
   
-  def sub_item_params
-    params.require(:subitem).permit(:item_id, :user_id, :subname, :image_id, :inventory, :alert_inventory, :memo, unit_attributes: [:unit])
+  def params_permitted
+    params.require(:subitem).permit(:item_id, :user_id, :subname, :image_id, :inventory, :alert_inventory, :memo, unit: [:unit])
   end
   
 end

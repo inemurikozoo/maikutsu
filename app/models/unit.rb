@@ -1,3 +1,3 @@
 class Unit < ApplicationRecord
-  belongs_to :item
+  belongs_to :sub_item
 end
