@@ -40,28 +40,31 @@
             <tr>
               <th>在庫アラート</th>
               <td>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                  <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                </div>
-                                <div class="form-group row">
-                  <div class="col-sm-2">
-                    <%= f.label :alert_inventory, '在庫アラート', {class: 'form-label'} %>
-                  </div>
+                <div class="form-group row">
                   <div class="col-sm-10 btn-group" data-toggle="buttons">
-                    <label class="btn btn-outline-secondary active" style="width:50%">
+                    <label class="btn btn-outline-primary active" style="width:50%">
                       <%= f.radio_button :alert_inventory, true, {} %> ON
                     </label>
-                    <label class="btn btn-outline-secondary" style="width:50%">
+                    <label class="btn btn-outline-primary" style="width:50%">
                       <%= f.radio_button :alert_inventory, false, {} %> OFF
                     </label>
                   </div>
                 </div>
+                
               </td>
             </tr>
             <tr>
               <th>使用期限アラート</th>
-              <t
+              <td>
+                <div class="form-group row">
+                  <div class="col-sm-10 btn-group" data-toggle="buttons">
+                    <label class="btn btn-outline-primary active" style="width:50%">
+                      <%= f.radio_button :, true, {} %> ON
+                    </label>
+                    <label class="btn btn-outline-primary" style="width:50%">
+                      <%= f.radio_button :, false, {} %> OFF
+                    </label>
+                  </div>
                 日付入力欄
               </td>
             </tr>
