@@ -12,7 +12,7 @@
               </td>
             </tr>
             <tr>
-              <th>もののニックネーム（任意）</th>
+              <th>もののニックネーム,商品名など（任意）</th>
               <td>
                 <%= f.text_field :subname, :size => "30" %>
               </td>
@@ -32,7 +32,7 @@
             </tr>
 
             <tr>
-              <th>在庫数</th>
+              <th>いまの在庫数</th>
               <td>
                 <%= f.text_field :inventory %>
               </td>
@@ -50,7 +50,7 @@
                     </label>
                   </div>
                 </div>
-                
+
               </td>
             </tr>
             <tr>
@@ -59,13 +59,15 @@
                 <div class="form-group row">
                   <div class="col-sm-10 btn-group" data-toggle="buttons">
                     <label class="btn btn-outline-primary active" style="width:50%">
-                      <%= f.radio_button :, true, {} %> ON
+                      <%= f.radio_button :alert_expiration, true, {} %> ON
                     </label>
                     <label class="btn btn-outline-primary" style="width:50%">
-                      <%= f.radio_button :, false, {} %> OFF
+                      <%= f.radio_button :alert_expiration, false, {} %> OFF
+
                     </label>
                   </div>
-                日付入力欄
+
+
               </td>
             </tr>
             <tr>
@@ -82,6 +84,9 @@
 
   </div>
 </div>
-<script>
-  
+<script type="text/javascript">
+  function connecttext(textid, ischeked){
+    if( ischeked == true)
+    document.getElementById("")
+  }
 </script>
