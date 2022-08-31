@@ -5,6 +5,7 @@ class Public::SubitemsController < ApplicationController
 
   def create
     @sub_item = SubItem.new
+    @sub_item.user_id = current_user.id
     if @sub_item.save
       redirect_to subitem_path, notice: "こものを作成しました"
     else
@@ -40,7 +41,9 @@ class Public::SubitemsController < ApplicationController
   private
 
   def params_permitted
-    params.require(:subitem).permit(:item_id, :user_id, :subname, :image_id, :inventory, :alert_inventory, :memo, unit: [:unit])
+    params.require(:subitem).permit(:item_id, :user_id, :subname, :image_id, :inventory,
+                                    :alert_inventory, :memo, :unit, :inv_constant,
+                                    :expiration_days, :alert_expiration)
   end
 
 end

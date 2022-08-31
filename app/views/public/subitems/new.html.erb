@@ -13,7 +13,7 @@
               </td>
             </tr>
             <tr>
-              <th>もののニックネーム,商品名など（任意）</th>
+              <th>ニックネーム,商品名など（任意）</th>
               <td>
                 &emsp;<%= f.text_field :subname, :size => "30" %>
               </td>
@@ -21,7 +21,7 @@
             <tr>
               <th>単位</th>
               <td>
-                ※<%= f.text_field :unit %>
+                ※<%= f.text_field :unit , placeholder: "グラム、本など"%>
               </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                       &emsp;<%= f.radio_button :alert_inventory, false, {} %> OFF
                     </label>
                   </div>
-                  <%= f.text_field %>
+                    <%= f.text_field :inv_constant %>個になったら通知する
                 </div>
               </td>
             </tr>
@@ -69,7 +69,16 @@
                     </div>
                   </div>
                   <div class="ms-1">
-                    &emsp;<%= f.date_field :expiration_days, id: "date" %>
+                    &emsp;<%= f.date_field :expiration_days, id: "date" %>の
+                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="today" id="today" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="today">当日</label>
+                  
+                    <input type="radio" class="btn-check" name="onedayago" id="onedayago" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="onedayago">1日前</label>
+                  </div>
+                      に通知する
+                    </div>
                   </div>
               </td>
             </tr>
@@ -87,7 +96,7 @@
 
   </div>
 </div>
-<!--以下、-->
+<!--以下、各アラートのON/OFF連動のテキストボックス有効/無効化切替処理-->
 <script type="text/javascript">
   
 </script>
