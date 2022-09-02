@@ -12,7 +12,7 @@
       </tr>
       <tr>
         <th>
-          管理上の
+          ニックネーム（任意）
         </th>
         <td>
           <%= @sub_item.name %>
@@ -20,18 +20,10 @@
       </tr>
       <tr>
         <th>
-          属するもの
-        </th>
-        <td>
-          <%= @sub_item.item.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>
           単位
         </th>
         <td>
-            <%= @sub_item.unit %>
+          <%= @sub_item.unit %>
         </td>
       </tr>
       <tr>
@@ -39,20 +31,47 @@
           画像
         </th>
         <td>
-            <%=  %>
+            <%= @sub_item.image_id %>
         </td>
       </tr>
       <tr>
         <th>
-          現在の在庫数
+          いまの在庫数
         </th>
         <td>
             <%= @item.inventory %>
         </td>
       </tr>
+      <tr>
+        <th>
+          在庫アラート設定
+        </th>
+        <td>
+          <%= @item.alert_inventory %>
+          <%= @item.inv_constant %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          使用期限アラート
+        </th>
+        <td>
+            <%= @item.alert_expiration %>
+            <%= @item.expiration_days %>の
+        </td>
+      </tr>
+      <tr>
+        <th>
+          メモ
+        </th>
+        <td>
+            <%= @item.memo %>
+        </td>
+      </tr>
     </table>
-    <%= link_to "登録する", , class: "btn btn-success" %>
-    <%= link_to "戻る", , class: "btn btn-danger", "data-confirm"  %>
+    <p>上記の内容で登録します。</p>
+      <%= link_to "登録する", , class: "btn btn-success" %>
+      <%= link_to "戻る", , class: "btn btn-danger", "data-confirm"  %>
   </div>
 </div>
 </div>
