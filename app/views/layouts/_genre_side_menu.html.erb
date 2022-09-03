@@ -1,6 +1,7 @@
 <div class="col-2-md">
   <div class="border border-secondary">
     <table class="table table-bordered">
+      <%= categories.each do |category| %>
       <tbody>
         <tr>
           <th>
@@ -11,7 +12,7 @@
         </tr>
         <tr>
           <td>
-              <%= link_to , class: "link-dark" %><br>
+              <%= category.name , class: "link-dark" %><br>
             <br>
             <% end %>
           </td>

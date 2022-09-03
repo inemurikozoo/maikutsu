@@ -4,10 +4,10 @@ class Public::SubitemsController < ApplicationController
   end
 
   def create
-    @sub_item = SubItem.new
+    @sub_item = SubItem.new(sub_item_params)
     @sub_item.user_id = current_user.id
-    if @sub_item.save
-      redirect_to subitem_path, notice: "こものを作成しました"
+    if @sub_item.save!
+      redirect_to subitem_path(@sub_item.id), notice: "こものを作成しました"
     else
       render new, notice: "こものの作成に失敗しました"
     end
@@ -19,6 +19,7 @@ class Public::SubitemsController < ApplicationController
 
   def show
     @sub_item = SubItem.find(params[:id])
+    
   end
 
   def edit
@@ -28,7 +29,7 @@ class Public::SubitemsController < ApplicationController
   def update
     @sub_item = SubItem.find(params[:id])
     if @sub_item.update(sub_item_params)
-      redirect_to sub_item_path(@sub_item.id), notice: "内容を更新しました"
+      redirect_to subitem_path(@sub_item.id), notice: "内容を更新しました"
     else
       render :edit,notice: "更新に失敗しました"
     end
@@ -40,8 +41,8 @@ class Public::SubitemsController < ApplicationController
 
   private
 
-  def params_permitted
-    params.require(:subitem).permit(:item_id, :user_id, :subname, :image_id, :inventory,
+  def sub_item_params
+    params.require(:sub_item).permit(:item_id, :subname, :inventory,
                                     :alert_inventory, :memo, :unit, :inv_constant,
                                     :expiration_days, :alert_expiration)
   end

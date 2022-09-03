@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_27_005048) do
+ActiveRecord::Schema.define(version: 2022_09_03_014323) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2022_08_27_005048) do
     t.integer "item_id", null: false
     t.integer "user_id", null: false
     t.string "subname", default: ""
-    t.integer "image_id", null: false
     t.integer "inventory", default: 0, null: false
     t.boolean "alert_inventory", default: false, null: false
     t.string "memo", default: ""
