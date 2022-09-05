@@ -5,31 +5,34 @@
         <table class="table">
           <thead>
           <tr>
-            <th>在庫管理</th>
+            <th>まとめて選択</th>
             <th>画像</th>
             <th>もの</th>
             <th>ニックネーム</th>
             <th>カテゴリ</th>
             <th>いまの在庫数</th>
+            <th></th>
             </tr>
           </thead>
           <tbody>
-          <tr>
-          <% @sub_items.each do |sub_item| %>
-          <td><%= item.id %></td>
-          <td></td>
-          <td><%= item.name %></td>
-          <td>
-            category
-          </td>
-          <td>
-            <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
-          </td>
-          </tr>
+            <tr>
+              <% @sub_items.each do |sub_item| %>
+              <td>
+                <%= check_box 1, false %>
+              </td>
+              <td><!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 --></td>
+              <td><%= sub_item.item.name %></td>
+              <td><%= sub_item.subname %></td>
+              <td><%= sub_item.item.category.name %></td>
+              <td><%= sub_item.inventory %></td>
+              <td>
+                <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
+              </td>
+            </tr>
           </tbody>
           <% end %>
         </table>
-
+          
       </div>
 
   </div>

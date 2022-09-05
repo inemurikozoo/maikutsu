@@ -19,7 +19,7 @@ class Public::SubitemsController < ApplicationController
 
   def show
     @sub_item = SubItem.find(params[:id])
-    
+    @categories = Category.all
   end
 
   def edit
@@ -35,10 +35,43 @@ class Public::SubitemsController < ApplicationController
     end
   end
 
-  def destroy
+  def minus
     @sub_item = SubItem.find(params[:id])
+    @sub_item.inventory -= 1
+    if @sub_item.inventory >= 0
+      @sub_item.inventory = 0
+      @sub_item.update(sub_item_params)
+      redirect_back(fallback_location: subitem_path(@sub_item.id))
+    elsif
+      @sub_item.update(sub_item_params)
+      redirect__back(fallback_location: subitem_path(@sub_item.id))
+    else
+      render "show"
+    end
   end
 
+  def plus
+    @sub_item = SubItem.find(params[:id])
+    @sub_item.inventory += 1
+    if @sub_item.update(sub_item_params)
+      redirect__back(fallback_location: subitem_path(@sub_item.id))
+    else
+      render "show"
+    end
+  end
+
+  def destroy
+    @sub_item = SubItem.find(params[:id])
+    if @sub_item.destroy
+      redirect_to subitems_path, notice: "こものを削除しました。"
+    else
+      render subitems_path, notice: "こものの削除に失敗しました。"
+    end
+  end
+
+  # def select_destroy
+  #   @sub_item
+  # end
   private
 
   def sub_item_params

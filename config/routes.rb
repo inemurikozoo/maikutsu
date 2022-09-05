@@ -27,10 +27,13 @@ Rails.application.routes.draw do
     get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
     patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
-    get 'subitems/confirm' => 'public/subitems#confirm', as: 'subitem_confirm'
+    patch 'subitems/plus' => 'public/subitems#plus', as: 'subitem_plus'
+    patch 'subitems/minus' => 'public/subitems#minus', as: 'subitem_minus'
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
     get 'shoppingmemos/index'
+    
+
 
 
 #管理者用

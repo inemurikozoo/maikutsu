@@ -1,7 +1,6 @@
 <div class="col-2-md">
   <div class="border border-secondary">
     <table class="table table-bordered">
-      <%= categories.each do |category| %>
       <tbody>
         <tr>
           <th>
@@ -10,11 +9,11 @@
             </strong>
           </th>
         </tr>
+        <% categories.each do |category| %>
         <tr>
           <td>
-              <%= category.name , class: "link-dark" %><br>
-            <br>
-            <% end %>
+            <%= link_to category.name %><br>
+        <% end %>
           </td>
         </tr>
       </tbody>
