@@ -1,7 +1,7 @@
 class SubItem < ApplicationRecord
   belongs_to :item
   has_one :shopping_memo, dependent: :destroy
-  has_one_attached :image
+  has_one_attached :sub_item_image
 
   # validate :pretend_ago
 

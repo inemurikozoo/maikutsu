@@ -17,22 +17,32 @@
           <tbody>
             <tr>
               <% @sub_items.each do |sub_item| %>
-              <td>
-                <%= check_box 1, false %>
-              </td>
-              <td><!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 --></td>
-              <td><%= sub_item.item.name %></td>
-              <td><%= sub_item.subname %></td>
-              <td><%= sub_item.item.category.name %></td>
-              <td><%= sub_item.inventory %></td>
-              <td>
+                <td>
+                  <%= check_box 1, false %>
+                </td>
+                <td>
+                  <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
+                  <% if sub_item.sub_item_image.present? %>
+                    <%= image_tag sub_item.image, size: "50x80" %>
+                  <% elsif sub_item.item.image.present? %>
+                    <%= image_tag sub_item.item.image, size: "50x80" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "50x80" %>
+                  <% end %>
+                </td>
+                <td><%= sub_item.item.name %></td>
+                <td><%= sub_item.subname %></td>
+                <td><%= sub_item.item.category.name %></td>
+                <td><%= sub_item.inventory %></td>
+                <td>
                 <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
+              <% end %>
               </td>
             </tr>
           </tbody>
-          <% end %>
+
         </table>
-          
+
       </div>
 
   </div>

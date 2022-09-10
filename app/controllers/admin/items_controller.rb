@@ -48,6 +48,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :category_id, :preserve_method, :how_to_choose, :limit)
+    params.require(:item).permit(:name, :category_id, :preserve_method, :how_to_choose,
+                                :limit, :image)
   end
 end

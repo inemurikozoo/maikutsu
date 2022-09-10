@@ -1,5 +1,5 @@
 class Public::ShoppingmemosController < ApplicationController
   def index
-    @shopping_memo = current_user.subitems
+    @shopping_memos = current_user.shopping
   end
 end

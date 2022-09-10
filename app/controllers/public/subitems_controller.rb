@@ -77,7 +77,7 @@ class Public::SubitemsController < ApplicationController
   def sub_item_params
     params.require(:sub_item).permit(:item_id, :subname, :inventory,
                                     :alert_inventory, :memo, :unit, :inv_constant,
-                                    :expiration_days, :alert_expiration)
+                                    :expiration_days, :alert_expiration, :image)
   end
 
 end
