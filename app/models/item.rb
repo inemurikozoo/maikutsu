@@ -2,6 +2,5 @@ class Item < ApplicationRecord
   has_many :sub_items, dependent: :destroy
   has_many :units, dependent: :destroy
   belongs_to :category
-  belongs_to  :user
-  has_one_attached :image
+  has_one_attached :item_image
 end

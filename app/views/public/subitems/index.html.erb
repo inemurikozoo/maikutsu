@@ -5,27 +5,28 @@
         <table class="table">
           <thead>
           <tr>
-            <th>まとめて選択</th>
+            <!--<th>まとめて選択</th>-->
             <th>画像</th>
             <th>もの</th>
             <th>ニックネーム</th>
             <th>カテゴリ</th>
             <th>いまの在庫数</th>
             <th></th>
+            <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <% @sub_items.each do |sub_item| %>
-                <td>
-                  <%= check_box 1, false %>
-                </td>
+            <% @sub_items.each do |sub_item| %>
+              <tr>
+                <!--<td>-->
+                <!--  チェックボックス-->
+                <!--</td>-->
                 <td>
                   <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
-                  <% if sub_item.sub_item_image.present? %>
-                    <%= image_tag sub_item.image, size: "50x80" %>
-                  <% elsif sub_item.item.image.present? %>
-                    <%= image_tag sub_item.item.image, size: "50x80" %>
+                  <% if sub_item.sub_item_image.attached? %>
+                    <%= image_tag sub_item.sub_item_image, size: "50x80" %>
+                  <% elsif sub_item.item.item_image.present? %>
+                    <%= image_tag sub_item.item.item_image, size: "50x80" %>
                   <% else %>
                     <%= image_tag 'no_image', size: "50x80" %>
                   <% end %>
@@ -35,15 +36,14 @@
                 <td><%= sub_item.item.category.name %></td>
                 <td><%= sub_item.inventory %></td>
                 <td>
-                <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
-              <% end %>
-              </td>
-            </tr>
+                  <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-primary btn-sm" %>
+                </td>
+                <td>
+                  <%= link_to "削除する", destroy_subitem_path(sub_item.id), "data-confirm" => "削除します。よろしいですか？", method: :delete, class: "btn btn-danger btn-sm" %></td>
+              </tr>
+            <% end %>
           </tbody>
-
         </table>
-
       </div>
-
   </div>
 </div>

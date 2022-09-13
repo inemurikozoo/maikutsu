@@ -38,25 +38,39 @@
                         <div class="btn-group px-2.5">
                           <ul class="navbar list-unstyled">
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to new_subitem_path, class: 'nav-link' do %> こもの登録<% end %><!--ものの登録ショートカット-->
+                              <%= link_to new_subitem_path, class: 'nav-link' do %> 
+                                <i class="far fa-bell fa-3x"></i><br>
+                                  通知  
+                              <% end %>
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to subitems_path, class: 'nav-link' do %> こもの一覧<% end %><!--ものの一覧-->
+                              <%= link_to new_subitem_path, class: 'nav-link' do %> 
+                                <i class="fas fa-cube fa-3x"></i><br>
+                                こもの登録
+                              <% end %>
                             </li>
-                            <!--<li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">-->
-                            <!--  <%= link_to "", class: 'nav-link' do %> 在庫一覧<% end %><!--在庫の一覧-->-->
-                            <!--</li>-->
-                            <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                              <%= link_to shoppingmemos_index_path, class: 'nav-link' do %> 買い物メモ<% end %><!--買いたいものの一覧-->
+                            <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
+                              <%= link_to subitems_path, class: 'nav-link' do %>
+                                <i class="fas fa-cubes fa-3x"></i><br>
+                                こもの一覧
+                              <% end %>
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                              <%= link_to destroy_user_session_path, class: 'nav-link' do %> ログアウト<% end %><!--ログアウト-->
+                              <%= link_to shoppingmemos_index_path, class: 'nav-link' do %>
+                                <i class="fas fa-clipboard fa-3x"></i><br>
+                                 買い物メモ
+                               <% end %>
+                            </li>
+                            <li class="nav-item btn btn-outline-secondary rounded btn-sm ml-2">
+                              <%= link_to destroy_user_session_path, class: 'nav-link' do %>
+                                <i class="fas fa-sign-out-alt fa-3x"></i><br>
+                                ログアウト
+                              <% end %>
                             </li>
                           </ul>
                         </div>
                       </div>
                     </div>
-
                   </div>
                   <!--　管理者のログイン時に表示されるメニュー　-->
                 <% elsif admin_signed_in? %>
@@ -68,22 +82,31 @@
                       <div class="btn-group px-2.5">
                         <ul class="navbar list-unstyled">
                           <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-2">
-                            <%= link_to admin_items_path, class: 'nav-link' do %> もの一覧<% end %><!--ものの一覧-->
+                            <%= link_to admin_items_path, class: 'nav-link' do %>
+                              <i class="fas fa-cubes fa-3x"></i><br>
+                              もの一覧
+                            <% end %>
                           </li>
                           <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-2">
-                            <%= link_to admin_categories_path, class: 'nav-link' do %>カテゴリ一覧<% end %><!--カテゴリの一覧-->
+                            <%= link_to admin_categories_path, class: 'nav-link' do %>
+                              <i class="far fa-folder fa-3x"></i><br>
+                              カテゴリ一覧
+                            <% end %>
                           </li>
                           <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-2">
-                            <%= link_to admin_users_path, class: 'nav-link' do %>会員一覧<% end %><!--会員の一覧-->
+                            <%= link_to admin_users_path, class: 'nav-link' do %>
+                            <i class="fas fa-users fa-3x"></i><br>
+                              会員一覧
+                            <% end %>
                           </li>
-                        <!--<li class="nav-item btn btn-outline-secondary rounded btn-sm mr-2">-->
-                        <!--  <%= link_to "", class: 'nav-link' do %>投稿一覧<% end %><!-- 投稿の一覧　-->-->
-                        <!--</li>-->
-                        <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>ログアウト<% end %>
-                        </li>
-                      </ul>
-                    </div>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm">
+                            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+                              <i class="fas fa-sign-out-alt fa-3x"></i><br>
+                              ログアウト
+                            <% end %>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                   </div>
@@ -99,16 +122,28 @@
                       <div class="btn-group px-2.5">
                         <ul class="navbar list-unstyled">
                           <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
-                            <%= link_to about_path, class: 'nav-link' do %>”まいくつ”とは？<% end %><!--Aboutページ-->
+                            <%= link_to about_path, class: 'nav-link' do %>
+                            <i class="far fa-hand-point-up fa-3x"></i><br>
+                            ”まいくつ”とは？
+                            <% end %><!--Aboutページ-->
                           </li>
                           <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
-                            <%= link_to items_path, class: 'nav-link' do %> もの一覧 <% end %><!--会員用のもの一覧-->
+                            <%= link_to "", class: 'nav-link' do %>
+                            <i class="fas fa-cubes fa-3x"></i><br>
+                            もの一覧 
+                            <% end %><!--もの一覧-->
                           </li>
                           <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
-                            <%= link_to new_user_registration_path, class: 'nav-link' do %> 新規登録 <% end %><!--会員用の新規登録ページへ--->
+                            <%= link_to new_user_registration_path, class: 'nav-link' do %>
+                            <i class="fas fa-user fa-3x"></i><br>
+                            新規登録 
+                            <% end %><!--会員用の新規登録ページへ--->
                           </li>
                           <li class="nav-item btn btn-outline-dark rounded btn-sm">
-                            <%= link_to new_user_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
+                            <%= link_to new_user_session_path, class: 'nav-link' do %>
+                            <i class="fas fa-sign-in-alt fa-3x"></i><br>
+                            ログイン
+                            <% end %><!--会員のログインページ-->
                           </li>
                         </ul>
                       </div>

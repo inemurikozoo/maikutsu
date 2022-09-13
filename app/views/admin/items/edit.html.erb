@@ -17,7 +17,9 @@
         </th>
         <td>
           <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-          <input type="hidden" id="colorCode" class="colorCode"
+          <!--★-->
+          <!--カテゴリのボタンの色を変更する処理、余裕があったら記述する-->
+          <!--<input type="hidden" id="colorCode" class="colorCode">-->
         </td>
       </tr>
       <tr>

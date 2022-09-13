@@ -24,9 +24,23 @@
     </div>
     <div class="col-md-10">
       <div class="row">
+        <%= form_with model: @sub_item, url: update_subitem_path(@sub_item.id), local: true do |f| %>
         <div class="col-md-6">
-          <div class="mono_image">
-            <img src="" alt="" class="rounded" size="75x75">
+          <div class="komono_image">
+
+
+              <% if @sub_item.sub_item_image.attached? %>
+                <%= image_tag @sub_item.sub_item_image, size: "200x200" %>
+              <% elsif @sub_item.item.item_image.present? %>
+                <%= image_tag @sub_item.item.item_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+
+
+            <!--<%= f.file_field :sub_item_image, class: "komono_image hidden_file" %>-->
+
+
           </div>
           <h2 class="mt-3 text-center bg-light border border-secondary box-shadow">
             <%= @sub_item.item.name %>
@@ -34,27 +48,21 @@
           <h5 class="mt-3 text-center bg-right border border-secondary">
             <%= @sub_item.item.category.name %>
           </h5>
-            <div class="border border-secondary bg-light">
-              <h4 class="font-weight-bold text-center">メモ</h4>
-              <div class="d-flex justify-content-center">
-                <div class=""></div>
-                <%= form_with model: @sub_item, url: update_subitem_path(@sub_item.id), local: true do |f| %>
-                <p><%= f.text_area :memo, style: "border: none", class: "ml-auto" %></h3>
-                <h3></h3>
-                <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
-              </div>
-            </div> 
           </div>
           <div class="col-md-6">
             <div class="border border-secondary bg-info">
               <h4 class="font-weight-bold text-center">いまの在庫</h4>
-              <div class="d-flex justify-content-center">
-                <!--<%= link_to "－", url: subitem_minus_path, method: :patch, class:"btn btn-light" %>-->
-                <h3><%= f.text_field :inventory, style: "border: none", size: "1" ,id:"now_inventory"%></h3>
-                <!--<%= link_to "＋", url: subitem_plus_path, method: :patch, class:"btn btn-light" %>-->
-                <h3><%= @sub_item.unit %></h3>
-                <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
-              </div>
+              <div class="field">
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-secondary" id="down">－</button>
+                  <!--<input type="inventory" name="inventory" id="inventory" value="#{}">-->
+                  <h3><%= f.text_field :inventory, style: "border: none", id: "inventory", size: "1" %></h3>
+                  <button class="btn btn-secondary" id="up">＋</button>
+                  <h3><%= @sub_item.unit %></h3>
+                  <button class="button resetbtn btn btn-danger" id="reset" >0にする</button>
+                  <%= f.submit "更新", class: "btn btn-secondary" %>
+                </div>
+              <script src="main.js"></script>
             </div>
             <div class="border border-secondary bg-warning">
               <h4 class="font-weight-bold text-center">在庫アラート</h4>
@@ -89,35 +97,95 @@
               <h3><%= f.date_field :expiration_days, style: "border: none", size: "1" %></h3>
               <h3></h3>
               <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
-              <% end %>
+              
             </div>
           </div>
-      
+            <div class="border border-secondary bg-light">
+              <h4 class="font-weight-bold text-center">メモ</h4>
+              <div class="d-flex justify-content-center">
+                <div class=""></div>
+
+                <p><%= f.text_area :memo, style: "border: none", class: "ml-auto" %></h3>
+                <h3></h3>
+                <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
+              </div>
+              <% end %>
+            </div>
           <!--タブ部分-->
-          <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="pm-tab" data-toggle="tab" href="#pm_method" role="tab" aria-controls="pm_method" aria-selected="true">保存方法</a>
+          <ul class="text-center nav nav-pills mb-3" id="pills-Tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+              class="nav-link active"
+              id="pm-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pm_method"
+              type="button"
+              role="tab"
+              aria-controls="pm_method"
+              aria-selected="true"
+              >
+                保存方法
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="htc-tab" data-toggle="tab" href="#htc" role="tab" aria-controls="htc" aria-selected="false">選び方</a>
+              <button
+              class="nav-link"
+              id="htc-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#htc"
+              type="button"
+              role="tab"
+              aria-controls="htc"
+              aria-selected="false"
+              >
+                選び方
+              </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="limit-tab" data-toggle="tab" href="#limit" role="tab" aria-controls="limit" aria-selected="false">使用期限（目安）</a>
+              <button
+              class="nav-link"
+              id="limit-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#limit"
+              type="button"
+              role="tab"
+              aria-controls="limit"
+              aria-selected="false"
+              >
+                使用期限（目安）
+              </a>
             </li>
           </ul>
           <!--タブで選択された要素部分-->
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="pm_method" role="tabpanel" aria-labelledby="pm-tab">
-              <%= @sub_item.item.preserve_method %>  
+          <div class="tab-content" id="pills-TabContent">
+            <div
+            class="tab-pane fade show active"
+            id="pm_method"
+            role="tabpanel"
+            aria-labelledby="pills-pm-tab"
+            >
+              <%= @sub_item.item.preserve_method %>
             </div>
-            <div class="tab-pane fade show" id="htc" role="tabpanel" aria-labelledby="htc-tab">
+            <div class="tab-pane fade show"
+            id="htc"
+            role="tabpanel"
+            aria-labelledby="pills-htc-tab"
+            >
               <%= @sub_item.item.how_to_choose %>
             </div>
-            <div class="tab-pane fade show" id="limit" role="tabpanel" aria-labelledby="limit-tab">
+            <div class="tab-pane fade show"
+            id="limit"
+            role="tabpanel"
+            aria-labelledby="pills-limit-tab"
+            >
               <%= @sub_item.item.limit %>
             </div>
           </div>
         </div>
       </div>
-  </div>
+     </div>
+
+
+
+
 </div>

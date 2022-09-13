@@ -11,6 +11,7 @@
               <td>
                 ※<%= f.collection_select(:item_id, Item.all, :id, :name, prompt: "選択してください") %>
               </td>
+              <!--★↑可能であればフリーワード検索的なものも実装したい-->
             </tr>
             <tr>
               <th>ニックネーム（任意）</th>
