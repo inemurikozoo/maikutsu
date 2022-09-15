@@ -20,4 +20,4 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application.scss";
 
-
+require('packs/main')

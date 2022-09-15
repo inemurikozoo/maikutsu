@@ -70,15 +70,15 @@ class Public::SubitemsController < ApplicationController
     end
   end
 
-  def destroy_all
-    # チェックボックスにチェックが入ったデータの受け取り
-    checked_data = params[:selects].keys
-    if SubItem.destroy(checked_data)
-      redirect_to subitems_path
-    else
-      render action: 'index'
-    end
-  end
+  # def destroy_all
+  #   # チェックボックスにチェックが入ったデータの受け取り
+  #   checked_data = params[:selects].keys
+  #   if SubItem.destroy(checked_data)
+  #     redirect_to subitems_path
+  #   else
+  #     render action: 'index'
+  #   end
+  # end
 
   private
 
