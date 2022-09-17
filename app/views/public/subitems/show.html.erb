@@ -73,14 +73,13 @@
               <h4 class="font-weight-bold text-center">在庫アラート</h4>
               <!--★各アラート（2か所）でトグルスイッチの導入を試みたが、見た目だけでformとして機能していない-->
               <!--★ON/OFFのトグルスイッチ（時間があったら修正）-->
-              <!--<div class="d-flex justify-content-center">-->
-              <!--  <p>OFF </p>-->
-              <!--  <div class="custom-control custom-switch">-->
-              <!--    <input class="custom-control-input" type="checkbox" id="alert_inventory" name="alert_inventory">-->
-              <!--    <label class="custom-control-label" for="alert_inventory"></label>-->
-              <!--  </div>-->
-              <!--  <p>ON</p>-->
-              <!--</div>-->
+              <div class="d-flex justify-content-center">
+                <div class="custom-control custom-switch">
+                  <input class="custom-control-input" type="checkbox" id="alert_inventory" name="alert_inventory">
+                  <label class="custom-control-label" for="alert_inventory"></label>
+                </div>
+                <p>使用する</p>
+              </div>
               <div class="d-flex justify-content-center">
               <h3><%= f.text_field :inv_constant, style: "border: none", size: "1" %></h3>
               <h3><%= @sub_item.unit %></h3>
@@ -90,14 +89,13 @@
             <div class="border border-secondary bg-danger">
               <h4 class="font-weight-bold text-center">使用期限アラート</h4>
               <!--★ON/OFFのトグルスイッチ（時間があったら修正・実装）-->
-              <!--<div class="d-flex justify-content-center">-->
-              <!--  <p>OFF </p>-->
-              <!--  <div class="custom-control custom-switch">-->
-                  <!--<input class="custom-control-input" type="checkbox" id="alert_expiration" name="alert_expiration">-->
-              <!--    <label class="custom-control-label" for="alert_expiration"></label>-->
-              <!--  </div>-->
-              <!--  <p>ON</p>-->
-              <!--</div>-->
+              <div class="d-flex justify-content-center">
+                <div class="custom-control custom-switch">
+                  <input class="custom-control-input" type="checkbox" id="alert_expiration" name="alert_expiration">
+                  <label class="custom-control-label" for="alert_expiration"></label>
+                </div>
+                <p>使用する</p>
+              </div>
             <div class="d-flex justify-content-center">
               <h3><%= f.date_field :expiration_days, style: "border: none", size: "1" %></h3>
               <h3></h3>

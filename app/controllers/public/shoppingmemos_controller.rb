@@ -3,8 +3,12 @@ class Public::ShoppingmemosController < ApplicationController
     @shopping_memos = current_user.shopping_memos
   end
   
-  def selsect_create
-    @shopping_memos = ShoppingMemo.where(id: params[:sub_items].keys).update_all
+  def selected_create
+    # sub_itemのindexで選択したものだけを変数に入れる
+    @shopping_memos = ShoppingMemo.where(id: params[:sub_items].keys)
+    # 変数に入れたら
+    @shopping_memos = ShoppingMemo.
+    @shopping_memos.save
     
     
     

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
     get 'shoppingmemos/index' => 'public/shoppingmemos#index'
-    
+    post 'shoppingmemos' => 'public/shoppignmemos#selected_create'
 
 
 

@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!--webpackerを使用している-->
+    <!--webpackerを使用する設定-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,15 +20,10 @@
           <div class="row">
             <div class="col-md-2">
              <!--まいくつロゴ-->
-              <a class="navbar-brand px-5 pe-3" alt="まいくつロゴ" href="/"><%= image_tag("assets/images/にんじん.jpeg") %></a>
+              <a class="navbar-brand px-5" alt="まいくつロゴ" href="/">
+                <%= image_tag 'まいくつ（ロゴ）' %>
+              </a>
             </div>
-          <!-- ヘッダーメニューの折り畳み、ブレーク　-->
-        <!--<button type="button" class="navbar-toggler"  data-toggle="collapse" data-target="#navbarNavDropdown"-->
-        <!--  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--  <span class="navbar-toggler-icon"></span>-->
-        <!--  </button>-->
-
-            <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
                   <!--  会員のログイン時に表示されるメニュー　-->
                 <% if user_signed_in? %>
 
@@ -38,13 +33,13 @@
                         <div class="btn-group px-2.5">
                           <ul class="navbar list-unstyled">
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to new_subitem_path, class: 'nav-link' do %> 
+                              <%= link_to new_subitem_path, class: 'nav-link' do %>
                                 <i class="far fa-bell fa-3x"></i><br>
-                                  通知  
+                                  通知
                               <% end %>
                             </li>
                             <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                              <%= link_to new_subitem_path, class: 'nav-link' do %> 
+                              <%= link_to new_subitem_path, class: 'nav-link' do %>
                                 <i class="fas fa-cube fa-3x"></i><br>
                                 こもの登録
                               <% end %>
@@ -69,6 +64,8 @@
                             </li>
                           </ul>
                         </div>
+                        <div class="row"><%= current_user.name %>さんの管理ページ</div>
+
                       </div>
                     </div>
                   </div>
@@ -130,13 +127,13 @@
                           <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
                             <%= link_to "", class: 'nav-link' do %>
                             <i class="fas fa-cubes fa-3x"></i><br>
-                            もの一覧 
+                            もの一覧
                             <% end %><!--もの一覧-->
                           </li>
                           <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
                             <%= link_to new_user_registration_path, class: 'nav-link' do %>
                             <i class="fas fa-user fa-3x"></i><br>
-                            新規登録 
+                            新規登録
                             <% end %><!--会員用の新規登録ページへ--->
                           </li>
                           <li class="nav-item btn btn-outline-dark rounded btn-sm">
