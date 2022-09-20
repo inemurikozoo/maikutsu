@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="mt-3 text-center bg-success border border-secondary">こもの一覧</h1>
   <div class="col-10-md">
-    <%= form_with url: shoppingmemos_path, method: :post %>
+    <%= form_with url: shoppingmemos_index_path, method: :post, local: true do |f| %>
       <div class="table-responsive">
         <table class="table">
           <thead>
@@ -20,7 +20,8 @@
             <% @sub_items.each do |sub_item| %>
               <tr>
                 <td>
-                  <%= check_box_tag "sub_items[#{sub_item.id}]", class:"select_item" %>
+                  -
+                  <%= check_box_tag "sub_item_ids[]", sub_item.id, false, {class:"select_item"} %>
                 </td>
                 <td>
                   <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
@@ -46,6 +47,7 @@
           </tbody>
         </table>
       </div>
-      <%= submit_tag "買い物メモに登録", class: "btn btn-secondary" %>
+      <%= f.submit "買い物メモに登録", class: "btn btn-secondary btn-square-shadow" %>
+    <% end %>
   </div>
 </div>

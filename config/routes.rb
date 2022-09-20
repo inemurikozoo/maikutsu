@@ -16,10 +16,12 @@ Rails.application.routes.draw do
 
 #会員用
     get root to: 'public/homes#top'
+
     get 'users' => 'public/users#show', as: 'user'
     get 'users/edit' => 'public/users#edit', as: 'user_edit'
     patch 'users' => 'public/users#update'
     get 'users/exit' => 'public/users#exit', as: 'user_exit'
+
     get 'subitems' => 'public/subitems#index', as: 'subitems'
     get 'subitems/new' => 'public/subitems#new', as: 'new_subitem'
     post 'subitems' => 'public/subitems#create', as: 'create_subitem'
@@ -28,15 +30,13 @@ Rails.application.routes.draw do
     get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
     patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
-    
-    patch 'subitems/plus' => 'public/subitems#plus', as: 'subitem_plus'
-    patch 'subitems/minus' => 'public/subitems#minus', as: 'subitem_minus'
+
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
+
     get 'shoppingmemos/index' => 'public/shoppingmemos#index'
-    post 'shoppingmemos' => 'public/shoppignmemos#selected_create'
-
-
+    post 'shoppingmemos/index' => 'public/shoppingmemos#selected_create'
+    delete 'shoppingmemos' => 'public/shoppingmemos#destroy'
 
 #管理者用
   namespace :admin do

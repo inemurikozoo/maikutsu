@@ -57,14 +57,14 @@
                   <span class="btn btn-secondary" id="down">－</span>
                   <div class="d-flex flex-column">
                     <!--<input type="text" name="page[inventory]" id="page_inventory" size="10">-->
-      
+
                     <h3><%= f.text_field :inventory, style: "border:none", id: "inventory", size: "1" %></h3>
                     <span class="button resetbtn btn btn-danger btn-sm" id="reset" >0にする</span>
                   </div>
-                  
+
                   <span class="btn btn-secondary" id="up">＋</span>
                   <h3><%= @sub_item.unit %></h3>
-                  
+
                   <%= f.submit "更新", class: "btn btn-secondary" %>
                 </div>
               <script src="main.js"></script>
@@ -74,11 +74,10 @@
               <!--★各アラート（2か所）でトグルスイッチの導入を試みたが、見た目だけでformとして機能していない-->
               <!--★ON/OFFのトグルスイッチ（時間があったら修正）-->
               <div class="d-flex justify-content-center">
-                <div class="custom-control custom-switch">
-                  <input class="custom-control-input" type="checkbox" id="alert_inventory" name="alert_inventory">
-                  <label class="custom-control-label" for="alert_inventory"></label>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="alert_inventory" name="alert_inventory">
+                  <label class="form-check-label" for="alert_inventory">使用する</label>
                 </div>
-                <p>使用する</p>
               </div>
               <div class="d-flex justify-content-center">
               <h3><%= f.text_field :inv_constant, style: "border: none", size: "1" %></h3>
@@ -90,17 +89,16 @@
               <h4 class="font-weight-bold text-center">使用期限アラート</h4>
               <!--★ON/OFFのトグルスイッチ（時間があったら修正・実装）-->
               <div class="d-flex justify-content-center">
-                <div class="custom-control custom-switch">
-                  <input class="custom-control-input" type="checkbox" id="alert_expiration" name="alert_expiration">
-                  <label class="custom-control-label" for="alert_expiration"></label>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="alert_expiration" name="alert_expiration">
+                  <label class="form-check-label" for="alert_expiration">使用する</label>
                 </div>
-                <p>使用する</p>
               </div>
             <div class="d-flex justify-content-center">
               <h3><%= f.date_field :expiration_days, style: "border: none", size: "1" %></h3>
               <h3></h3>
               <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
-              
+
             </div>
           </div>
             <div class="border border-secondary bg-light">

@@ -12,4 +12,6 @@ class SubItem < ApplicationRecord
   # end
 # ↑挙動がおかしくなったので、確認の上再度実装を試みる
 
+  validates :item_id, presence: true
+  validates :unit, presence: true
 end

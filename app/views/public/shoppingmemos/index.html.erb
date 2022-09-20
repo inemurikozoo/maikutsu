@@ -17,13 +17,14 @@
               <th>いまの在庫数</th>
               <th>メモ</th>
               <th>削除</th>
+              <th></th>
               </tr>
             </thead>
             <tbody>
               <% @shopping_memos.each do |shopping_memo| %>
                 <tr>
                   <td>
-                    "買った"ボタン
+                    <button type="button" class="btn btn" ></button> 
                   </td>
                   <td>
                     <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
@@ -38,26 +39,41 @@
                   </td>
                   <td>
                     <!--ニックネームが登録されていれば名前を2段表示、なければ”もの”名を1段で大きく表示-->
-                    <%= shopping_memo.item.name %><br>
+                    <%= shopping_memo.sub_item.subname %><br>
                     <% if shopping_memo.sub_item.subname.present? %>
-                      <%= shopping_memo.item.name %><br>
+                      <%= shopping_memo.sub_item.subname %><br>
                       <p>(<%= shopping_memo.sub_item.subname %>)</p>
                     <% else %>
                       <h5><%= shopping_memo.sub_item.item.name %></h5>
                     <% end %>
                   </td>
-                  <td><%= shopping_memo.sub_item.category.name %></td>
-                  <td><%= shopping_memo.sub_item.inventory %></td>
-                  <td><%= shopping_memo.sub_item.memo %></td>
-                  <td>削除ボタン</td>
-                  <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
+                  <td>
+                    <%= shopping_memo.sub_item.item.category.name%>
+                  </td>
+                  <td>
+                    <%= shopping_memo.sub_item.inventory %><%= shopping_memo.sub_item.unit %>
+                  </td>
+                  <td>
+                    <%= shopping_memo.sub_item.memo %>
+                  </td>
+                  <td>
+                    <%= link_to "削除する", shoppingmemos_path, method: :detele, class: "btn btn-danger" %>   
+                  </td>
+                  <td>
+                    <%= link_to "詳細へ", subitem_path(shopping_memo.sub_item.id), class: "btn btn-success" %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
 
           </table>
         </div>
+        <!--LINEで送るボタン-->
+        <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="http://★URL" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
+        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        
         <% else %>
+        <!--買い物メモに項目がない場合の挙動-->
         <p>
           買い物メモはありません。<br>
           こもの一覧から登録できます。<br>
