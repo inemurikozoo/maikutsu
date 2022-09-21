@@ -1,1 +1,14 @@
 @import '~bootstrap/scss/bootstrap.scss';
+
+.Button{
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 50px;
+    border: solid 1px #404040;
+    border-radius: 10px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+  }

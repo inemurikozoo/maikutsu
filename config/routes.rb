@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 #会員用deviseルート
   devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+    registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
 
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :users
     patch 'users/:id' => 'users#update'
     resources :items
-    resources :categories, only: [:new,:index,:edit,:update]
+    resources :categories, only: [:new,:create,:index,:edit,:update]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

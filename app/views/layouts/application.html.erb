@@ -63,7 +63,7 @@
                              <% end %>
                           </li>
                           <li class="nav-item btn btn-outline-secondary rounded btn-sm ml-2">
-                            <%= link_to destroy_user_session_path, class: 'nav-link' do %>
+                            <%= link_to destroy_user_session_path, method: :DELETE, class: 'nav-link' do %>
                               <i class="fas fa-sign-out-alt fa-3x"></i><br>
                               ログアウト
                             <% end %>

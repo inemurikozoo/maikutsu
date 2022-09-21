@@ -3,8 +3,18 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def create
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:notice] = "カテゴリを作成しました"
+    else
+      @category = Category.all.page(params[:page].per(10))
+      render :index and return
+    end
+  end
+
   def index
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(10)
 
   end
 

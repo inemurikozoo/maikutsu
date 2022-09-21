@@ -57,3 +57,4 @@ gem 'webpacker', '~> 5.0'
 gem 'kaminari', '~> 1.2.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'rails-i18n'
