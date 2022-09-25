@@ -25,13 +25,13 @@
                 <% @sub_items.each do |sub_item| %>
                   <tr>
                     <td>
-                      <div class="d-flex justify-content-center">
-                        <span class="btn btn-secondary down">－</span>
+                      <div class="d-flex justify-content-center sub_item_inventory">
+                        <span class="btn btn-secondary down" id="down_<%= sub_item.id %>">－</span>
                         <div class="d-flex flex-column">
-                          <h3><%= f.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}" %></h3>
-                          <span class="button reset btn btn-danger btn-sm">リセット</span>
+                          <h3><%= f.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}", value: 0 %></h3>
+                          <span class="button reset btn btn-danger btn-sm" id="reset_<%= sub_item.id %>">リセット</span>
                         </div>
-                        <span class="btn btn-secondary up">＋</span>
+                        <span class="btn btn-secondary up" id="up_<%= sub_item.id %>">＋</span>
                         <h3>
                           <%= sub_item.unit %>
                         </h3>
@@ -78,7 +78,6 @@
             </table>
           </div>
         <%= f.submit "買い物終了", class: "btn btn-primary" %>
-        <script src="main.js"></script>
         <!--LINEで送るボタン-->
         <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="http://★URL" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
@@ -106,3 +105,4 @@
     <% end %>
   </div>
 </div>
+<%= javascript_pack_tag 'sub_items' %>

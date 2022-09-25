@@ -39,8 +39,9 @@ class Public::SubitemsController < ApplicationController
     sub_items_inventries = params.dig(:sub_items, :sub_item)
     sub_items_inventries.each do |k, v|
       id = k
-      inventory = v.dig(:inventry)
-      SubItem.find(id).update(inventory: inventory)
+      inventory = v.dig(:inventry).to_i
+      sub_item = SubItem.find(id)
+      sub_item.update(inventory: sub_item.inventory + inventory)
     end
     redirect_back(fallback_location: root_path)
   end
