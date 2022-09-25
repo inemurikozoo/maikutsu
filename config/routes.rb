@@ -30,13 +30,21 @@ Rails.application.routes.draw do
     get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
     patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
+    post 'subitems/update_all', to: 'public/subitems#update_all', as: 'all_update_subitems'
 
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
 
     get 'shoppingmemos/index' => 'public/shoppingmemos#index'
     post 'shoppingmemos/index' => 'public/shoppingmemos#selected_create'
-    delete 'shoppingmemos' => 'public/shoppingmemos#destroy'
+    delete 'shoppingmemos/:id' => 'public/shoppingmemos#destroy', as: 'destroy_shoppingmemo'
+
+    # sub_itemの一覧画面のソート
+    get 'sub_item/index/sort_default', to: 'public/subitems#index', as: 'sort_default'
+    get 'sub_item/index/sort_category', to: 'public/subitems#index', as: 'sort_category'
+    get 'sub_item/index/sort_name', to: 'public/subitems#index', as: 'sort_name'
+
+
 
 #管理者用
   namespace :admin do

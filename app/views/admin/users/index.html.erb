@@ -21,19 +21,19 @@
           <td><%= user.email %></td>
           <td>
             <% if user.is_active == true %>
-              <p class="text-success font-weight-bold">有効</p>
+              <p class="text-success fw-bold">有効</p>
             <% else %>
-              <p class="text-secondary font-weight-bold">退会</p>
+              <p class="text-secondary fw-bold">退会</p>
             <% end %>
           </td>
           <td>
-            <%= link_to "詳細", admin_path(user.id) %>
+            <%= link_to "詳細", admin_path(user.id), class: "btn btn-success" %>
           </td>
           </tr>
           </tbody>
           <% end %>
         </table>
-
+        <%= paginate @users, theme: 'bootstrap-5' %>
       </div>
 
   </div>

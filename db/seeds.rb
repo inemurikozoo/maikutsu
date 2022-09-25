@@ -10,6 +10,83 @@ Admin.create(
   password: "aaaaaa"
 )
 
+
+#ミントじゃない強め緑
+Category.create!(
+  name: "野菜・果物",
+  color_code: "#8eff8e"
+  )
+
+#朱色系赤
+Category.create!(
+  name: "肉類",
+  color_code: "#ff8e8e"
+  )
+
+#青らしい青
+Category.create!(
+  name: "魚介類",
+  color_code: "#8ec6ff"
+  )
+
+#黄色
+Category.create!(
+  name: "卵・穀類・豆類",
+  color_code: "#ffff8e"
+  )
+
+#赤紫
+Category.create!(
+  name: "飲み物",
+  color_code: "#c68eff"
+  )
+
+#青紫
+Category.create!(
+  name: "嗜好品",
+  color_code: "#8e8eff"
+  )
+
+#オレンジ
+Category.create!(
+  name: "調味料・粉類",
+  color_code: "#ffc68e"
+  )
+
+#ミント色
+Category.create!(
+  name: "乳製品",
+  color_code: "#8effc6"
+  )
+
+#黄緑
+Category.create!(
+  name: "乾物",
+  color_code: "#c6ff8e"
+  )
+
+#ピンクより赤
+Category.create!(
+  name: "パン・麺類",
+  color_code: "#ff8ec6"
+  )
+
+#水色
+Category.create!(
+  name: "冷凍食品",
+  color_code: "#8effff"
+  )
+
+#ピンク
+Category.create!(
+  name: "その他食品",
+  color_code: "#ff8eff"
+  )
+
+#食品系はパステルカラー
+#その他はビビッドカラーで統一
+
+
 Item.create!(
   name: "にんじん",
   preserve_method: "濡らさないように注意。袋やラップ、新聞紙にくるんで野菜室へ。しなびても水へ漬けたら復活！",
@@ -88,79 +165,4 @@ end
     is_active: true
   )
 end
-
-#食品系はパステルカラー
-#その他はビビッドカラーで統一
-
-#ミントじゃない強め緑
-Category.create!(
-  name: "野菜・果物",
-  color_code: "#8eff8e"
-  )
-
-#朱色系赤
-Category.create!(
-  name: "肉類",
-  color_code: "#ff8e8e"
-  )
-
-#青らしい青
-Category.create!(
-  name: "魚介類",
-  color_code: "#8ec6ff"
-  )
-
-#黄色
-Category.create!(
-  name: "卵・穀類・豆類",
-  color_code: "#ffff8e"
-  )
-
-#赤紫
-Category.create!(
-  name: "飲み物",
-  color_code: "#c68eff"
-  )
-
-#青紫
-Category.create!(
-  name: "嗜好品",
-  color_code: "#8e8eff"
-  )
-
-#オレンジ
-Category.create!(
-  name: "調味料・粉類",
-  color_code: "#ffc68e"
-  )
-
-#ミント色
-Category.create!(
-  name: "乳製品",
-  color_code: "#8effc6"
-  )
-
-#黄緑
-Category.create!(
-  name: "乾物",
-  color_code: "#c6ff8e"
-  )
-
-#ピンクより赤
-Category.create!(
-  name: "パン・麺類",
-  color_code: "#ff8ec6"
-  )
-
-#水色
-Category.create!(
-  name: "冷凍食品",
-  color_code: "#8effff"
-  )
-
-#ピンク
-Category.create!(
-  name: "その他食品",
-  color_code: "#ff8eff"
-  )
 

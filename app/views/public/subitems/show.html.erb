@@ -1,71 +1,50 @@
-<!--<script>-->
-<!--  window.addEventListener('DOMContentLoaded', function(){-->
-
-<!--    //今の在庫の値を取得-->
-<!--    var input_inventory = document.getElementById("now_inventory");-->
-
-<!--    //いまの在庫の数字が変わったときに、updateを実行する-->
-<!--    input_inventory.addEventListener("change",function(){-->
-<!--      $.ajax(-->
-<!--        url: 'subitems/:id',-->
-<!--        type: "PATCH"-->
-<!--        );-->
-<!--    })-->
-<!--  })-->
-<!--</script>-->
-
-
-  <div class="container-fluid">
+<div class="container-fluid">
   <h1 class="mt-3 text-center bg-success border border-secondary">こもの詳細/編集</h1>
-
   <div class="row">
-    <div class="col-md-2">
-      <%= render 'layouts/genre_side_menu', categories: @categories %>
-    </div>
-    <div class="col-md-10">
-      <div class="row">
+    <!--<div class="col-md-2">-->
+    <!--  <%= render 'layouts/categories_side_menu', categories: @categories %>-->
+    <!--</div>-->
+    <!--<div class="col-md-10">-->
+    <!--  <div class="row">-->
         <%= form_with model: @sub_item, url: update_subitem_path(@sub_item.id), local: true do |f| %>
         <div class="col-md-6">
           <div class="komono_image">
-
-
               <% if @sub_item.sub_item_image.attached? %>
-                <%= image_tag @sub_item.sub_item_image, size: "200x200" %>
+                <%= image_tag @sub_item.sub_item_image, size: "500x300" %>
               <% elsif @sub_item.item.item_image.present? %>
-                <%= image_tag @sub_item.item.item_image, size: "200x200" %>
+                <%= image_tag @sub_item.item.item_image, size: "500x300" %>
               <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
+                <%= image_tag 'no_image', size: "500x300" %>
               <% end %>
-
-
             <!--<%= f.file_field :sub_item_image, class: "komono_image hidden_file" %>-->
-
-
           </div>
           <h2 class="mt-3 text-center bg-light border border-secondary box-shadow">
             <%= @sub_item.item.name %>
           </h2>
-          <h5 class="mt-3 text-center bg-right border border-secondary">
+          <h2 class="mt-3 text-center bg-light border border-secondary box-shadow">
+            <%= f.text_field :subname, placeholder: "ニックネーム" %>
+            <%= f.submit "更新", class: "btn btn-secondary" %>
+          </h2>
+
+          <h5 class="mt-3 text-center bg-right border border-secondary" style="background-color:<%= @sub_item.item.category.color_code %>">
             <%= @sub_item.item.category.name %>
           </h5>
           </div>
           <div class="col-md-6">
-            <div class="border border-secondary bg-info">
+            <div class="border border-secondary">
               <h4 class="font-weight-bold text-center">いまの在庫</h4>
               <div class="field">
                 <div class="d-flex justify-content-center">
                   <span class="btn btn-secondary" id="down">－</span>
                   <div class="d-flex flex-column">
-                    <!--<input type="text" name="page[inventory]" id="page_inventory" size="10">-->
-
                     <h3><%= f.text_field :inventory, style: "border:none", id: "inventory", size: "1" %></h3>
                     <span class="button resetbtn btn btn-danger btn-sm" id="reset" >0にする</span>
                   </div>
-
                   <span class="btn btn-secondary" id="up">＋</span>
-                  <h3><%= @sub_item.unit %></h3>
-
-                  <%= f.submit "更新", class: "btn btn-secondary" %>
+                  <h3>
+                    <%= @sub_item.unit %>
+                    <%= f.submit "更新", class: "btn btn-secondary" %>
+                  </h3>
                 </div>
               <script src="main.js"></script>
             </div>
@@ -98,14 +77,11 @@
               <h3><%= f.date_field :expiration_days, style: "border: none", size: "1" %></h3>
               <h3></h3>
               <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
-
             </div>
           </div>
             <div class="border border-secondary bg-light">
               <h4 class="font-weight-bold text-center">メモ</h4>
               <div class="d-flex justify-content-center">
-                <div class=""></div>
-
                 <p><%= f.text_area :memo, style: "border: none", class: "ml-auto" %></h3>
                 <h3></h3>
                 <%= f.submit "更新", class: "btn btn-sm btn-secondary" %>
@@ -184,8 +160,4 @@
         </div>
       </div>
      </div>
-
-
-
-
 </div>

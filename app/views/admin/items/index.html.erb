@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="mt-3 text-center bg-success border border-secondary">もの一覧</h1>
-  
+
   <div class="col-10-md">
     <%= link_to "もの新規登録", new_admin_item_path ,class: "btn btn-primary"%>
       <div class="table-responsive">
@@ -10,6 +10,7 @@
             <th>ものID</th>
             <th></th>
             <th>なまえ</th>
+            <th>画像</th>
             <th>カテゴリ</th>
             <th></th>
             </tr>
@@ -18,7 +19,13 @@
           <tr>
           <% @items.each do |item| %>
           <td><%= item.id %></td>
-          <td></td>
+          <td>
+            <% if item.item_image.attached? %>
+              <%= image_tag item.item_image, size: "80x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "80x50" %>
+            <% end %>
+          </td>
           <td><%= item.name %></td>
           <td>
             <% if item.category %>
@@ -34,7 +41,7 @@
           </tbody>
           <% end %>
         </table>
-
+        <%= paginate @items, theme: 'bootstrap-5' %>
       </div>
 
   </div>

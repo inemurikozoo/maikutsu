@@ -15,7 +15,6 @@ class Public::SubitemsController < ApplicationController
 
   def index
     @sub_items = current_user.sub_items
-
   end
 
   def show
@@ -36,6 +35,16 @@ class Public::SubitemsController < ApplicationController
     end
   end
 
+  def update_all
+    sub_items_inventries = params.dig(:sub_items, :sub_item)
+    sub_items_inventries.each do |k, v|
+      id = k
+      inventory = v.dig(:inventry)
+      SubItem.find(id).update(inventory: inventory)
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   def destroy
     sub_item = SubItem.find(params[:id])
     if sub_item.destroy
@@ -50,7 +59,10 @@ class Public::SubitemsController < ApplicationController
   def sub_item_params
     params.require(:sub_item).permit(:item_id, :subname, :inventory,
                                     :alert_inventory, :memo, :unit, :inv_constant,
-                                    :expiration_days, :alert_expiration, :image)
+                                    :expiration_days, :alert_expiration, :sub_item_image)
   end
 
+  def sub_items_update_all_params
+    params.require(:sub_items).permit(sub_item: [])
+  end
 end

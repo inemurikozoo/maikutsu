@@ -12,6 +12,19 @@
       </tr>
       <tr>
         <th>
+          画像
+        </th>
+        <td>
+          <!--画像の登録がなければ保存されたnoimageを表示する-->
+          <% if @item.item_image.present? %>
+            <%= image_tag @item.item_image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>
           カテゴリ
         </th>
         <td>

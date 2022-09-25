@@ -2,95 +2,107 @@
   <h1 class="mt-3 text-center bg-success border border-secondary">買い物メモ</h1>
   <div class="col-10-md">
     <% if user_signed_in? %>
-      <% if current_user.shopping_memos.present? %>
-        <div class="table-responsive text-center">
-          <table class="table">
-            <thead>
-            <tr>
-              <th></th>
-              <th>画像</th>
-              <th>
-                もの<br>
-                （ニックネーム）
-              </th>
-              <th>カテゴリ</th>
-              <th>いまの在庫数</th>
-              <th>メモ</th>
-              <th>削除</th>
-              <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @shopping_memos.each do |shopping_memo| %>
+      <% if current_user.sub_items.present? %>
+        <%= form_with scope: :sub_items, url: all_update_subitems_path, method: :post, local: true do |f| %>
+          <div class="table-responsive text-center">
+            <table class="table">
+              <thead>
                 <tr>
-                  <td>
-                    <button type="button" class="btn btn" ></button> 
-                  </td>
-                  <td>
-                    <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
-                    <% if shopping_memo.sub_item.sub_item_image.attached? %>
-                      <%= image_tag shopping_memo.sub_item.sub_item_image, size: "50x80" %>
-                    <% elsif shopping_memo.sub_item.item.item_image.present? %>
-                      <%= image_tag shopping_memo.sub_item.item.item_image, size: "50x80" %>
-                    <% else %>
-                      <%= image_tag 'no_image', size: "50x80" %>
-                    <% end %>
-                    <!--★↑ここまで、余裕あればパーシャルにする-->
-                  </td>
-                  <td>
-                    <!--ニックネームが登録されていれば名前を2段表示、なければ”もの”名を1段で大きく表示-->
-                    <%= shopping_memo.sub_item.subname %><br>
-                    <% if shopping_memo.sub_item.subname.present? %>
-                      <%= shopping_memo.sub_item.subname %><br>
-                      <p>(<%= shopping_memo.sub_item.subname %>)</p>
-                    <% else %>
-                      <h5><%= shopping_memo.sub_item.item.name %></h5>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= shopping_memo.sub_item.item.category.name%>
-                  </td>
-                  <td>
-                    <%= shopping_memo.sub_item.inventory %><%= shopping_memo.sub_item.unit %>
-                  </td>
-                  <td>
-                    <%= shopping_memo.sub_item.memo %>
-                  </td>
-                  <td>
-                    <%= link_to "削除する", shoppingmemos_path, method: :detele, class: "btn btn-danger" %>   
-                  </td>
-                  <td>
-                    <%= link_to "詳細へ", subitem_path(shopping_memo.sub_item.id), class: "btn btn-success" %>
-                  </td>
+                  <th>購入数</th>
+                  <th>画像</th>
+                  <th>
+                    もの<br>
+                    （ニックネーム）
+                  </th>
+                  <th>カテゴリ</th>
+                  <th>いまの在庫数</th>
+                  <th>メモ</th>
+                  <th>削除</th>
+                  <th></th>
                 </tr>
-              <% end %>
-            </tbody>
-
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                <% @sub_items.each do |sub_item| %>
+                  <tr>
+                    <td>
+                      <div class="d-flex justify-content-center">
+                        <span class="btn btn-secondary down">－</span>
+                        <div class="d-flex flex-column">
+                          <h3><%= f.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}" %></h3>
+                          <span class="button reset btn btn-danger btn-sm">リセット</span>
+                        </div>
+                        <span class="btn btn-secondary up">＋</span>
+                        <h3>
+                          <%= sub_item.unit %>
+                        </h3>
+                      </div>
+                    </td>
+                    <td>
+                      <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
+                      <% if sub_item.sub_item_image.attached? %>
+                        <%= image_tag sub_item.sub_item_image, size: "80x50" %>
+                      <% elsif sub_item.item.item_image.present? %>
+                        <%= image_tag sub_item.item.item_image, size: "80x50" %>
+                      <% else %>
+                        <%= image_tag 'no_image', size: "80x50" %>
+                      <% end %>
+                      <!--★↑ここまで、余裕あればメソッド？にする-->
+                    </td>
+                    <td>
+                      <!--ニックネームが登録されていれば名前を2段表示、なければ”もの”名を1段で大きく表示-->
+                      <% if sub_item.subname.present? %>
+                        <h6><%= sub_item.item.name %></h6>
+                        <p>(<%= sub_item.subname %>)</p>
+                      <% else %>
+                        <h5><%= sub_item.item.name %></h5>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= sub_item.item.category.name %>
+                    </td>
+                    <td>
+                      <%= sub_item.inventory %><%= sub_item.unit %>
+                    </td>
+                    <td>
+                      <%= sub_item.memo %>
+                    </td>
+                    <td>
+                      <!--<%#= link_to "削除", destroy_shoppingmemo_path(shopping_memo.id), "data-confirm" => "削除します。よろしいですか？", method: :delete, class: "btn btn-danger btn-sm" %>-->
+                    </td>
+                    <td>
+                      <%= link_to "詳細へ", subitem_path(sub_item.id), class: "btn btn-success" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <%= f.submit "買い物終了", class: "btn btn-primary" %>
+        <script src="main.js"></script>
         <!--LINEで送るボタン-->
         <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="http://★URL" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-        
-        <% else %>
-        <!--買い物メモに項目がない場合の挙動-->
+        <% end %>
+      <% else %>
+        <!--買い物メモに項目がない場合の画面-->
         <p>
           買い物メモはありません。<br>
           こもの一覧から登録できます。<br>
           <%= link_to "こもの一覧へ", subitems_path, class: "btn btn-success" %>
         </p>
       <% end %>
-      <% else %>
-        <p>
-          会員登録すると、買い物メモ機能をご利用いただけます。<br>
-          買い物メモ機能は、登録した「こもの」から、買う必要があるもののみを登録し、<br>
-          一覧として表示できます。<br>
-          在庫数からあらかじめ設定しておいた在庫数を下回ったときに<br>
-          自動で買い物メモに登録することもできます。（オート登録）<br>
-          買い物メモの画面から数量を入力することもできます。<br>
-          きっと、あなたのお買い物の効率を上げる手助けになるはずです。<br>
-          さあ、快適な在庫管理ライフを始めましょう。<br>
-        </p>
-      <% end %>
+    <% else %>
+      <!--サインインされていない場合の画面-->
+      <p>
+        会員登録すると、買い物メモ機能をご利用いただけます。<br>
+        買い物メモ機能は、登録した「こもの」から、買う必要があるもののみを登録し、<br>
+        一覧として表示できます。<br>
+        在庫数からあらかじめ設定しておいた在庫数を下回ったときに<br>
+        自動で買い物メモに登録することもできます。（オート登録）<br>
+        買い物メモの画面から数量を入力することもできます。<br>
+        きっと、あなたのお買い物の効率を上げる手助けになるはずです。<br>
+        さあ、快適な在庫管理ライフを始めましょう。<br>
+      </p>
+    <% end %>
   </div>
 </div>

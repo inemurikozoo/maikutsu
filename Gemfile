@@ -58,3 +58,5 @@ gem 'kaminari', '~> 1.2.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rails-i18n'
+
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'

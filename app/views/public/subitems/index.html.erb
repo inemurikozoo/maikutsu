@@ -20,28 +20,32 @@
             <% @sub_items.each do |sub_item| %>
               <tr>
                 <td>
-                  -
                   <%= check_box_tag "sub_item_ids[]", sub_item.id, false, {class:"select_item"} %>
                 </td>
                 <td>
                   <!--画像、こもので登録しているかを見て、なければものの画像を表示する処理 -->
                   <% if sub_item.sub_item_image.attached? %>
-                    <%= image_tag sub_item.sub_item_image, size: "50x80" %>
+                    <%= image_tag sub_item.sub_item_image, size: "80x50" %>
                   <% elsif sub_item.item.item_image.present? %>
-                    <%= image_tag sub_item.item.item_image, size: "50x80" %>
+                    <%= image_tag sub_item.item.item_image, size: "80x50" %>
                   <% else %>
-                    <%= image_tag 'no_image', size: "50x80" %>
+                    <%= image_tag 'no_image', size: "80x50" %>
                   <% end %>
                 </td>
                 <td><%= sub_item.item.name %></td>
                 <td><%= sub_item.subname %></td>
-                <td><%= sub_item.item.category.name %></td>
+                <td>
+                  <div class="Button" style="background-color: <%= sub_item.item.category.color_code %>">
+                    <%= sub_item.item.category.name %>
+                  </div>
+                </td>
                 <td><%= sub_item.inventory %></td>
                 <td>
                   <%= link_to "詳細", subitem_path(sub_item.id), class: "btn btn-primary btn-sm" %>
                 </td>
                 <td>
-                  <%= link_to "削除", destroy_subitem_path(sub_item.id), "data-confirm" => "削除します。よろしいですか？", method: :delete, class: "btn btn-danger btn-sm" %></td>
+                  <%= link_to "削除", destroy_subitem_path(sub_item.id), "data-confirm" => "削除します。よろしいですか？", method: :delete, class: "btn btn-danger btn-sm" %>
+                </td>
               </tr>
             <% end %>
           </tbody>

@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def show
@@ -37,8 +37,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    if @item.destroy
+    item = Item.find(params[:id])
+    if item.destroy
       redirect_to admin_items_path, notice: "ものを削除しました"
     else
       render :show, notice: "ものの削除に失敗しました"
@@ -49,6 +49,6 @@ class Admin::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :category_id, :preserve_method, :how_to_choose,
-                                :limit, :image)
+                                :limit, :item_image)
   end
 end
