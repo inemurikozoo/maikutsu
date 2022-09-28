@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'notification/index'
+  end
 #管理者用deviseルート
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
     get 'users/exit' => 'public/users#exit', as: 'user_exit'
 
     get 'subitems' => 'public/subitems#index', as: 'subitems'
+    post 'subitems/:id' => 'public/subitems#update_index', as: 'subitems_update'
     get 'subitems/new' => 'public/subitems#new', as: 'new_subitem'
     post 'subitems' => 'public/subitems#create', as: 'create_subitem'
     delete 'subitems' => 'public/subitems#destroy_all', as: 'all_destroy_subitem'
@@ -32,18 +36,20 @@ Rails.application.routes.draw do
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
     post 'subitems/update_all', to: 'public/subitems#update_all', as: 'all_update_subitems'
 
+
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
 
     get 'shoppingmemos/index' => 'public/shoppingmemos#index'
     post 'shoppingmemos/index' => 'public/shoppingmemos#selected_create'
-    delete 'shoppingmemos/:id' => 'public/shoppingmemos#destroy', as: 'destroy_shoppingmemo'
+    post 'shoppingmemos/:id' => 'public/shoppingmemos#delete_memo', as: 'delete_shoppingmemo'
 
     # sub_itemの一覧画面のソート
     get 'sub_item/index/sort_default', to: 'public/subitems#index', as: 'sort_default'
     get 'sub_item/index/sort_category', to: 'public/subitems#index', as: 'sort_category'
     get 'sub_item/index/sort_name', to: 'public/subitems#index', as: 'sort_name'
 
+    get 'notification/index', to: 'public/notification#index', as: 'notifications'
 
 
 #管理者用

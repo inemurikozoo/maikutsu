@@ -27,13 +27,29 @@ class Public::SubitemsController < ApplicationController
   end
 
   def update
-    @sub_item = SubItem.find(params[:id])
+    sub_item = SubItem.find(params[:id])
+    if
+      # 在庫アラートの通知を作成する
+      create_inv_alert_notification(current_user)
+    end
+
     if @sub_item.update(sub_item_params)
-      redirect_to subitem_path(@sub_item.id), notice: "内容を更新しました"
+      redirect_to subitem_path(sub_item.id), notice: "内容を更新しました"
     else
       render :edit,notice: "更新に失敗しました"
     end
   end
+
+  def update_index
+    sub_item = SubItem.find(params[:id])
+    if sub_item.update(sub_item_params)
+      redirect_back(fallback_location: subitems_update_path(sub_item.id))
+    else
+      render :index, notice: "更新に失敗しました"
+    end
+  end
+
+
 
   def update_all
     sub_items_inventries = params.dig(:sub_items, :sub_item)

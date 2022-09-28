@@ -13,7 +13,12 @@ Admin.create(
 
 #ミントじゃない強め緑
 Category.create!(
-  name: "野菜・果物",
+  name: "野菜",
+  color_code: "#8eff8e"
+  )
+
+Category.create!(
+  name: "果物",
   color_code: "#8eff8e"
   )
 
@@ -31,10 +36,19 @@ Category.create!(
 
 #黄色
 Category.create!(
-  name: "卵・穀類・豆類",
+  name: "卵",
   color_code: "#ffff8e"
   )
 
+Category.create!(
+  name: "穀類",
+  color_code: "#ffff8e"
+  )
+
+Category.create!(
+  name: "豆類",
+  color_code: "#ffff8e"
+  )
 #赤紫
 Category.create!(
   name: "飲み物",
@@ -49,7 +63,11 @@ Category.create!(
 
 #オレンジ
 Category.create!(
-  name: "調味料・粉類",
+  name: "調味料",
+  color_code: "#ffc68e"
+  )
+Category.create!(
+  name: "粉類",
   color_code: "#ffc68e"
   )
 
@@ -67,7 +85,11 @@ Category.create!(
 
 #ピンクより赤
 Category.create!(
-  name: "パン・麺類",
+  name: "パン",
+  color_code: "#ff8ec6"
+  )
+Category.create!(
+  name: "麺類",
   color_code: "#ff8ec6"
   )
 
@@ -108,7 +130,7 @@ Item.create!(
   preserve_method: "パックに入れたままとがったほうを下にして保管する。腐る原因となるので洗ってはダメ。",
   how_to_choose: "割ったときにプリっと黄身が盛り上がっているものは鮮度が高い。",
   limit: "採卵後最長で57日。賞味期限は生で食べられる期限。",
-  category_id: 4
+  category_id: 5
   )
 
 Item.create!(
@@ -150,12 +172,6 @@ Item.create!(
   limit: "",
   category_id: 5
   )
-
-30.times do |n|
-  Item.create!(
-    name: "テスト#{n + 1}"
-    )
-end
 
 30.times do |n|
   User.create!(

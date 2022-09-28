@@ -8,8 +8,11 @@ class CreateSubItems < ActiveRecord::Migration[5.2]
       t.integer :inventory,       null: false,    default: 0
       t.boolean :alert_inventory, null: false,    default: false
       t.string  :memo,                            default: ""
-      t.boolean :is_monitoring,   null:false,     default: false
-
+      t.boolean :is_monitoring,   null: false,     default: false
+      t.string  :unit,            null: false,    default: ""
+      t.integer :inv_constant
+      t.date    :expiration_days
+      t.boolean :alert_expiration
       t.timestamps
     end
   end

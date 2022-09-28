@@ -6,3 +6,10 @@ ja:
       user:
         name: 名前
         email: メールアドレス
+    models:
+      sub_item: こもの
+    attributes:
+      sub_item:
+        subname: こものの名前
+        unit: 単位
+        item_id: もの

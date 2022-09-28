@@ -1,7 +1,7 @@
 class Public::ShoppingmemosController < ApplicationController
 
   def index
-    @sub_items = current_user.sub_items.shopping_memos
+    @sub_items = current_user.shoppingmemos
   end
 
   def selected_create
@@ -12,12 +12,12 @@ class Public::ShoppingmemosController < ApplicationController
       redirect_to shoppingmemos_index_path
   end
 
-  def destroy
-    shoppingmemo = ShoppingMemo.find(params[:id])
-    if shoppingmemo.destroy
-      redirect_to shoppingmemos_index_path, notice: "買い物メモから削除しました。"
+  def delete_memo
+    @sub_item = SubItem.find(params[:id])
+    if @sub_item.update(is_monitoring: false)
+      redirect_to shoppingmemos_index_path, notice: "メモの項目を削除しました"
     else
-      render :index,notice: "更新に失敗しました"
+      render :index
     end
   end
 
@@ -27,5 +27,5 @@ class Public::ShoppingmemosController < ApplicationController
     params.require(:shoppingmemos).permit(:user_id, :sub_item_id, :is_monitoring)
   end
 
-  
+
 end

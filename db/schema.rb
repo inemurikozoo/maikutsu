@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "color_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "color_code", default: ""
   end
 
   create_table "items", force: :cascade do |t|
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "image_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -75,6 +74,8 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
     t.integer "sub_item_id", null: false
     t.string "action", null: false
     t.boolean "checked", default: false
+    t.date "date"
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -87,24 +88,24 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
     t.boolean "alert_inventory", default: false, null: false
     t.string "memo", default: ""
     t.boolean "is_monitoring", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "unit", default: ""
+    t.string "unit", default: "", null: false
     t.integer "inv_constant"
     t.date "expiration_days"
     t.boolean "alert_expiration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
