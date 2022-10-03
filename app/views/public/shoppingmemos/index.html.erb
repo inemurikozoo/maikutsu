@@ -3,7 +3,7 @@
   <div class="col-10-md">
     <% if user_signed_in? %>
       <% if @sub_items.present? %>
-        <%= form_with scope: :sub_items, url: all_update_subitems_path, method: :post, local: true do |f| %>
+        <%= form_with scope: :sub_items, url: shoppingmemos_update_all_path, method: :patch, local: true do |f| %>
           <div class="table-responsive text-center">
             <table class="table">
               <thead>
@@ -77,7 +77,7 @@
               </tbody>
             </table>
           </div>
-        <%= f.submit "買い物終了", class: "btn btn-primary" %>
+        <%= f.submit "買い物終了", class: "btn btn-primary", "data-confirm" => "買い物を終了して購入数をサーバーに送信します。" %>
         <!--LINEで送るボタン-->
         <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="http://★URL" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>

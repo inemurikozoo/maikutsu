@@ -17,12 +17,13 @@
             <tr>
               <th>もの</th>
               <td>
-                ※<%= f.collection_select(:item_id, Item.all, :id, :name, prompt: "選択してください") %>
+                <%= f.collection_select(:item_id, Item.all, :id, :name, prompt: "選択してください") %><br>
+                選択すると保存方法や良いものの選び方等をチェックしやすくなります。
               </td>
               <!--★↑可能であればフリーワード検索的なものも実装したい-->
             </tr>
             <tr>
-              <th>ニックネーム（任意）</th>
+              <th>ニックネーム</th>
               <td>
                 &emsp;<%= f.text_field :subname, :size => "30", placeholder: "鶏もも肉、アラエール（商品名）等" %>
               </td>
@@ -51,52 +52,25 @@
                 在庫アラート<br>
               </th>
               <td>
-                <div class="form-group row">
-                  <div class="col-sm-10 btn-group" data-toggle="buttons">
-                    <label class="btn btn-outline-primary active" style="width:50%">
-                      &emsp;<input type="radio" value="true" name="sub_item[alert_inventory]">
-                        ON
-                    </label>
-                    <label class="btn btn-outline-primary" style="width:50%">
-                      &emsp;<input type="radio" value="false" name="sub_item[alert_inventory]">
-                        OFF
-                    </label>
-                  </div>
-                  <span id="invBox">
-                    &emsp;在庫数が<%= f.text_field :inv_constant %>個になったら通知する
-                  </span>
-                </div>
+                &emsp;<input type="radio" class="btn-check" id="inv_alert_off" value="false" name="sub_item[alert_inventory]" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="inv_alert_off">OFF</label>
+                &emsp;<input type="radio" class="btn-check" id="inv_alert_on" value="true" name="sub_item[alert_inventory]" autocomplete="off">
+                <label class="btn btn-outline-primary" for="inv_alert_on">ON</label><br>
+                <span id="invBox">
+                  &emsp;在庫数が<%= f.text_field :inv_constant %>個になったら通知する
+                </span>
               </td>
             </tr>
             <tr>
               <th>使用期限アラート</th>
               <td>
-                <div class="form-group row">
-                  <div class="col-sm-10 btn-group" data-toggle="buttons">
-                    <label class="btn btn-outline-primary active">
-                      &emsp;<input type="radio" value="true" name="sub_item[alert_expiration]">
-                        ON
-                    </label>
-                    <label class="btn btn-outline-primary">
-                      &emsp;<input type="radio" value="false" name="sub_item[alert_expiration]">
-                        OFF
-                    </label>
-                  </div>
-                 </div>
+                &emsp;<input type="radio" class="btn-check" id="date_alert_off" value="false" name="sub_item[alert_expiration]" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="date_alert_off">OFF</label>
+                &emsp;<input type="radio" class="btn-check" id="date_alert_on" value="true" name="sub_item[alert_expiration]" autocomplete="off">
+                <label class="btn btn-outline-primary" for="date_alert_on">ON</label><br>
                   <span id="dayBox">
                     <div class="ms-1">
-                      &emsp;<%= f.date_field :expiration_days, id: "date" %>の
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                      <label class="btn btn-outline-primary" for="today">
-                      <input type="radio" class="btn-check" name="expDay" id="today" autocomplete="off" checked>
-                        当日
-                      </label>
-                      <label class="btn btn-outline-primary" for="onedayago">
-                      <input type="radio" class="btn-check" name="expDay" id="onedayago" autocomplete="off">
-                        1日前
-                      </label>
-                    </div>
-                      に通知する
+                      &emsp;<%= f.date_field :expiration_days, id: "date" %>になったら通知する
                     </div>
                   </span>
                   </div>
@@ -113,12 +87,5 @@
         <%= f.submit "登録", class: "btn btn-success" %>
       <% end %>
     </div>
-
   </div>
 </div>
-<!--以下、各アラートのON/OFF連動のテキストボックス有効/無効化切替処理-->
-<script type="text/javascript">
-
-
-
-</script>

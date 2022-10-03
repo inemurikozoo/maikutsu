@@ -1,7 +1,7 @@
 class Public::ShoppingmemosController < ApplicationController
 
   def index
-    @sub_items = current_user.shoppingmemos
+    @sub_items = current_user.sub_items.where(is_monitoring: true)
   end
 
   def selected_create
@@ -10,6 +10,17 @@ class Public::ShoppingmemosController < ApplicationController
     #現在のdbにあるサブアイテムid
     SubItem.where(id: new_sub_item_ids).update_all(is_monitoring: true) if new_sub_item_ids.any?
       redirect_to shoppingmemos_index_path
+  end
+
+  def update_all
+    sub_items_inventories = params.dig(:sub_items, :sub_item)
+    sub_items_inventories.each do |k, v|
+      id = k
+      inventory = v.dig(:inventry).to_i
+      sub_item = SubItem.find(id)
+      sub_item.update(inventory: sub_item.inventory + inventory)
+    end
+    redirect_to shopping_finish_path
   end
 
   def delete_memo
@@ -21,11 +32,7 @@ class Public::ShoppingmemosController < ApplicationController
     end
   end
 
+
   private
-
-  def shopping_memos_params
-    params.require(:shoppingmemos).permit(:user_id, :sub_item_id, :is_monitoring)
-  end
-
 
 end

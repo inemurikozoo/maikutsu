@@ -11,15 +11,14 @@
   <div class="row">
     <%= form_with model: @sub_item, url: update_subitem_path(@sub_item.id), local: true do |f| %>
     <div class="col-md-6">
-
       <div class="komono_image">
-          <% if @sub_item.sub_item_image.attached? %>
-            <%= image_tag @sub_item.sub_item_image, size: "500x300" %>
-          <% elsif @sub_item.item.item_image.present? %>
-            <%= image_tag @sub_item.item.item_image, size: "500x300" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "500x300" %>
-          <% end %>
+        <% if @sub_item.sub_item_image.attached? %>
+          <%= image_tag @sub_item.sub_item_image, size: "500x300" %>
+        <% elsif @sub_item.item.item_image.present? %>
+          <%= image_tag @sub_item.item.item_image, size: "500x300" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "500x300" %>
+        <% end %>
         <%= f.file_field :sub_item_image, class: "komono_image" %>
         <%= f.submit "更新", class: "btn btn-secondary" %>
       </div>
@@ -30,7 +29,6 @@
         <%= f.text_field :subname, placeholder: "ニックネーム" %>
         <%= f.submit "更新", class: "btn btn-secondary" %>
       </h2>
-
       <h5 class="mt-3 text-center bg-right border border-secondary" style="background-color:<%= @sub_item.item.category.color_code %>">
         <%= @sub_item.item.category.name %>
       </h5>
@@ -51,17 +49,18 @@
                 <%= f.submit "更新", class: "btn btn-secondary" %>
               </h3>
             </div>
-        </div>
-        <div class="border border-secondary bg-light">
+          </div>
+          <div class="border border-secondary bg-light">
           <h4 class="font-weight-bold text-center"><i class="fas fa-cubes fa-2x"></i>在庫アラート</h4>
-          <!--★各アラート（2か所）でトグルスイッチの導入を試みたが、見た目だけでformとして機能していない-->
-          <!--★ON/OFFのトグルスイッチ（時間があったら修正）-->
-          <!--<div class="d-flex justify-content-center">-->
-          <!--  <div class="form-check form-switch">-->
-          <!--    <input class="form-check-input" type="checkbox" id="alert_inventory" name="alert_inventory">-->
-          <!--    <label class="form-check-label" for="alert_inventory">使用する</label>-->
-          <!--  </div>-->
-          <!--</div>-->
+          <div class="d-flex justify-content-center">
+            <!--ラジオボタン-->
+            <strong>
+              <%= f.radio_button :alert_inventory, "inv_alert_off", value: false %>
+              <%= f.label :alert_inventory, "OFF", {style: "display: inline-block;"} %>&emsp;
+              <%= f.radio_button :alert_inventory, "inv_alert_on", value: true %>
+              <%= f.label :alert_inventory, "ON", {style: "display: inline-block;"} %>
+            </strong>  
+          </div>
           <div class="d-flex justify-content-center">
           <h3><%= f.text_field :inv_constant, size: "1" %></h3>
           <h3><%= @sub_item.unit %></h3>
@@ -70,13 +69,15 @@
         </div>
         <div class="border border-secondary bg-light">
           <h4 class="font-weight-bold text-center"><i class="fas fa-stopwatch fa-2x"></i>使用期限アラート</h4>
-          <!--★ON/OFFのトグルスイッチ（時間があったら修正・実装）-->
-          <!--<div class="d-flex justify-content-center">-->
-          <!--  <div class="form-check form-switch">-->
-          <!--    <input class="form-check-input" type="checkbox" id="alert_expiration" name="alert_expiration">-->
-          <!--    <label class="form-check-label" for="alert_expiration">使用する</label>-->
-          <!--  </div>-->
-          <!--</div>-->
+          <div class="d-flex justify-content-center">
+            <!--ラジオボタン-->
+            <strong>
+              <%= f.radio_button :alert_expiration, "inv_alert_off", value: false %>
+              <%= f.label :alert_expiration, "OFF", {style: "display: inline-block;"} %>&emsp;
+              <%= f.radio_button :alert_expiration, "inv_alert_on", value: true %>
+              <%= f.label :alert_expiration, "ON", {style: "display: inline-block;"} %>
+            </strong>
+          </div>
         <div class="d-flex justify-content-center">
           <h3><%= f.date_field :expiration_days, size: "1" %></h3>
           <h3></h3>

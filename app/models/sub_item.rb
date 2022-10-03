@@ -1,5 +1,5 @@
 class SubItem < ApplicationRecord
-  # optional: true はnilを許容する
+  # optional: true はnilを許容する記述
   belongs_to :item, optional: true
   has_one_attached :sub_item_image
   belongs_to :user
@@ -15,7 +15,9 @@ class SubItem < ApplicationRecord
   
   # ソート
   scope :sort_subname_desc, -> { order(subname: :desc) }
-  scope :sort_subname_asc,  -> { order(subname: :asc)}
+  scope :sort_subname_asc,  -> { order(subname: :asc) }
+  
+  
 
   # 今日以前の日付が選択できないようにする記述
   def date_cannot_be_in_the_past
@@ -23,4 +25,7 @@ class SubItem < ApplicationRecord
       errors.add(:expiration_days, ": 過去の日付は使用できません")
     end
   end
+  
+  
+  
 end

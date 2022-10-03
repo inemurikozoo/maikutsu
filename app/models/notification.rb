@@ -11,7 +11,7 @@ class Notification < ApplicationRecord
       user_id: current_user,
       sub_item_id: sub_item_id,
       action: "inv_alert",
-      message: "新規アラートが作成されました。",
+      message: "#{sub_item.subname}の在庫数が少なくなっています。",
       date: Date.today
       )
     notification.save
@@ -21,8 +21,10 @@ class Notification < ApplicationRecord
   def create_exp_alert_notification(current_user)
     notification = current_user.notifications.new(
       user_id: current_user,
-      sub_item_id: id,
-      action: "exp_alert"
+      sub_item_id: sub_item_id,
+      action: "exp_alert",
+      message: "#{sub_item.subname}の設定された使用期限が到来しましたのでお知らせします。",
+      date: Date.today
       )
     notification.save
   end

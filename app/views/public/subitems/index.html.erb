@@ -18,9 +18,7 @@
               </tr>
             </thead>
             <tbody>
-
               <% @sub_items.each do |sub_item| %>
-
                 <tr>
                   <td>
                     <%= check_box_tag "sub_item_ids[]", sub_item.id, false, {class: "select_item"} %>
@@ -43,12 +41,7 @@
                     </div>
                   </td>
                   <td>
-                    <h3>
-                      <%= number_field :inventory, id: "inventory", size: "1" %>
-                      <%= sub_item.unit %>
-                    </h3>
-                    </div>
-
+                    <h3><%= sub_item.inventory %><%= sub_item.unit %></h3>
                   </td>
                   <td>
                     <%= link_to "詳細", subitem_path(sub_item.id), class: "btn btn-primary btn-sm" %>
@@ -58,12 +51,13 @@
                   </td>
                 </tr>
               <% end %>
-
             </tbody>
           </table>
         </div>
         <%= f.submit "買い物メモに登録", class: "btn btn-secondary btn-square-shadow" %>
       <% end %>
+      <%= link_to "入力専用画面を開く",  %>
+      <p>別ウィンドウで開きます</p>
     <% else %>
     <!--こものが存在しない場合-->
     <p>
@@ -74,4 +68,4 @@
     <% end %>
   </div>
 </div>
-<%= javascript_pack_tag 'main' %>
+<%= javascript_pack_tag 'sub_items' %>

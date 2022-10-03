@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'notification/index'
-  end
 #管理者用deviseルート
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -20,10 +17,17 @@ Rails.application.routes.draw do
 #会員用
     get root to: 'public/homes#top'
 
+  namespace :public do
+    resources :users do
+      get 'exit'
+    end
+    # resources :subitems
+  end
     get 'users' => 'public/users#show', as: 'user'
     get 'users/edit' => 'public/users#edit', as: 'user_edit'
     patch 'users' => 'public/users#update'
-    get 'users/exit' => 'public/users#exit', as: 'user_exit'
+    # get 'users/exit' => 'public/users#exit', as: 'user_exit'
+
 
     get 'subitems' => 'public/subitems#index', as: 'subitems'
     post 'subitems/:id' => 'public/subitems#update_index', as: 'subitems_update'
@@ -32,10 +36,9 @@ Rails.application.routes.draw do
     delete 'subitems' => 'public/subitems#destroy_all', as: 'all_destroy_subitem'
     get 'subitems/:id/edit' => 'public/subitems#edit', as: 'edit_subitem'
     get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
+
     patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
-    post 'subitems/update_all', to: 'public/subitems#update_all', as: 'all_update_subitems'
-
 
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
@@ -43,7 +46,8 @@ Rails.application.routes.draw do
     get 'shoppingmemos/index' => 'public/shoppingmemos#index'
     post 'shoppingmemos/index' => 'public/shoppingmemos#selected_create'
     post 'shoppingmemos/:id' => 'public/shoppingmemos#delete_memo', as: 'delete_shoppingmemo'
-
+    get 'shoppingmemos/finish' => 'public/shoppingmemos#finish', as: 'shopping_finish'
+    patch 'shoppingmemos/update_all', to: 'public/shoppingmemos#update_all'
     # sub_itemの一覧画面のソート
     get 'sub_item/index/sort_default', to: 'public/subitems#index', as: 'sort_default'
     get 'sub_item/index/sort_category', to: 'public/subitems#index', as: 'sort_category'
@@ -55,7 +59,6 @@ Rails.application.routes.draw do
 #管理者用
   namespace :admin do
     resources :users
-    patch 'users/:id' => 'users#update'
     resources :items
     resources :categories, only: [:new,:create,:index,:edit,:update]
   end
