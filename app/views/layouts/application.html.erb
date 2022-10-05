@@ -37,8 +37,11 @@
                     <div class="col-md-9">
                       <div class="btn-group px-2">
                         <ul class="navbar-nav me-auto mb-2 md-md-() list-unstyled">
+                          <% if unchecked_notifications.any? %>
+                            <i class="fa fa-circle" style="color: blue;"></i>
+                          <% end %>
                           <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3">
-                            <%= link_to new_subitem_path, class: 'nav-link' do %>
+                            <%= link_to notifications_path, class: 'nav-link' do %>
                               <i class="far fa-bell fa-3x"></i><br>
                                 通知
                             <% end %>
@@ -72,7 +75,6 @@
                   </div>
                 </div>
               </div>
-              
             <% elsif admin_signed_in? %>
             <!--　管理者のログイン時に表示されるメニュー　-->
             <div class="col">
@@ -109,7 +111,6 @@
                 </div>
               </div>
             </div>
-
         <% else %>
           <!--  管理者と会員共通非ログイン時表示メニュー -->
           <div class="col">
@@ -122,12 +123,6 @@
                       <i class="far fa-hand-point-up fa-3x"></i><br>
                       ”まいくつ”とは？
                       <% end %><!--Aboutページ-->
-                    </li>
-                    <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
-                      <%= link_to "", class: 'nav-link' do %>
-                      <i class="fas fa-cubes fa-3x"></i><br>
-                      もの一覧
-                      <% end %><!--もの一覧-->
                     </li>
                     <li class="nav-item btn btn-outline-dark rounded btn-sm mr-4">
                       <%= link_to new_user_registration_path, class: 'nav-link' do %>
@@ -162,7 +157,6 @@
     <% end %>
     <% notice %>
     <main class="mb-auto">
-
       <%= yield %>
     </main>
 

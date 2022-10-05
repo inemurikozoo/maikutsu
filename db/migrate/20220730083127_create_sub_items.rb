@@ -13,6 +13,8 @@ class CreateSubItems < ActiveRecord::Migration[5.2]
       t.integer :inv_constant
       t.date    :expiration_days
       t.boolean :alert_expiration
+      
+      
       t.timestamps
     end
   end

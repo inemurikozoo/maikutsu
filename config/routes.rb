@@ -15,30 +15,22 @@ Rails.application.routes.draw do
   }
 
 #会員用
-    get root to: 'public/homes#top'
+    root to: 'public/homes#top'
 
-  namespace :public do
-    resources :users do
-      get 'exit'
-    end
-    # resources :subitems
-  end
     get 'users' => 'public/users#show', as: 'user'
     get 'users/edit' => 'public/users#edit', as: 'user_edit'
     patch 'users' => 'public/users#update'
-    # get 'users/exit' => 'public/users#exit', as: 'user_exit'
+    get 'users/exit' => 'public/users#exit', as: 'user_exit'
 
-
-    get 'subitems' => 'public/subitems#index', as: 'subitems'
-    post 'subitems/:id' => 'public/subitems#update_index', as: 'subitems_update'
     get 'subitems/new' => 'public/subitems#new', as: 'new_subitem'
     post 'subitems' => 'public/subitems#create', as: 'create_subitem'
-    delete 'subitems' => 'public/subitems#destroy_all', as: 'all_destroy_subitem'
-    get 'subitems/:id/edit' => 'public/subitems#edit', as: 'edit_subitem'
     get 'subitems/:id' => 'public/subitems#show', as: 'subitem'
-
+    get 'subitems' => 'public/subitems#index', as: 'subitems'
+    get 'subitems/:id/edit' => 'public/subitems#edit', as: 'edit_subitem'
     patch 'subitems/:id' => 'public/subitems#update', as: 'update_subitem'
     delete 'subitems/:id' => 'public/subitems#destroy', as: 'destroy_subitem'
+    post 'subitems/:id' => 'public/subitems#update_index', as: 'subitems_update'
+    delete 'subitems' => 'public/subitems#destroy_all', as: 'all_destroy_subitem'
 
     get 'homes/top'
     get 'about' => 'public/homes#about', as: 'about'
@@ -54,7 +46,7 @@ Rails.application.routes.draw do
     get 'sub_item/index/sort_name', to: 'public/subitems#index', as: 'sort_name'
 
     get 'notification/index', to: 'public/notification#index', as: 'notifications'
-
+    delete 'notification/:id', to: 'public/notification#destroy', as: 'notification_destroy'
 
 #管理者用
   namespace :admin do
@@ -62,6 +54,7 @@ Rails.application.routes.draw do
     resources :items
     resources :categories, only: [:new,:create,:index,:edit,:update]
   end
-
+# ゲストログイン
+  # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

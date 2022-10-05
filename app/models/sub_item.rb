@@ -4,7 +4,7 @@ class SubItem < ApplicationRecord
   has_one_attached :sub_item_image
   belongs_to :user
   has_many :notifications, dependent: :destroy
-  
+
   validates :item_id, presence: true
   validates :unit, presence: true
   validate :date_cannot_be_in_the_past
@@ -12,12 +12,36 @@ class SubItem < ApplicationRecord
 
   # ショッピングメモモデルを消したので代替え案
   scope :shopping_memos, -> { where(is_monitoring: true) }
-  
+
   # ソート
   scope :sort_subname_desc, -> { order(subname: :desc) }
   scope :sort_subname_asc,  -> { order(subname: :asc) }
-  
-  
+
+# 在庫アラート
+  def create_inv_alert_notification(user)
+    notification = user.notifications.new(
+      sub_item_id: id,
+      action: "inv_alert",
+      message: "#{item.name}の在庫数が少なくなっています。",
+      date: Date.today
+      )
+    notification.save
+  end
+
+  # 期限アラート
+  def create_exp_alert_notification(current_user)
+    notification = user.notifications.new(
+      sub_item_id: id,
+      action: "exp_alert",
+      message: "#{item.name}の設定された使用期限が到来しましたのでお知らせします。",
+      date: Date.today
+      )
+    notification.save
+  end
+
+  def is_alert_inv(inventory,inv_constant)
+    (inventory - inv_constant).to_i
+  end
 
   # 今日以前の日付が選択できないようにする記述
   def date_cannot_be_in_the_past
@@ -25,7 +49,7 @@ class SubItem < ApplicationRecord
       errors.add(:expiration_days, ": 過去の日付は使用できません")
     end
   end
-  
-  
-  
+
+
+
 end

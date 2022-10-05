@@ -28,15 +28,16 @@ class Public::SubitemsController < ApplicationController
 
   def update
     @sub_item = SubItem.find(params[:id])
-
-
+    @inventory = @sub_item.is_alert_inv(@sub_item.inventory,@sub_item.inv_constant)
+    if @sub_item.alert_inventory && @inventory <= 0
+      @sub_item.create_inv_alert_notification(current_user)
+    end
     if @sub_item.update(sub_item_params)
       redirect_to subitem_path(@sub_item.id), notice: "内容を更新しました"
     else
       render :edit,notice: "更新に失敗しました"
     end
   end
-
 
   def destroy
     sub_item = SubItem.find(params[:id])
