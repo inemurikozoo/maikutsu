@@ -28,7 +28,7 @@
                       <div class="d-flex justify-content-center sub_item_inventory">
                         <span class="btn btn-secondary down" id="down_<%= sub_item.id %>">－</span>
                         <div class="d-flex flex-column">
-                          <h3><%= f.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}", value: 0, size: "40" %></h3>
+                          <h3 class="number_field"><%= f.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}", value: 0 %></h3>
                           <span class="button reset btn btn-danger btn-sm" id="reset_<%= sub_item.id %>">リセット</span>
                         </div>
                         <span class="btn btn-secondary up" id="up_<%= sub_item.id %>">＋</span>

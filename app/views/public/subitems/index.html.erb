@@ -41,7 +41,20 @@
                     </div>
                   </td>
                   <td>
-                    <h3><%= sub_item.inventory %><%= sub_item.unit %></h3>
+                    <!--★indexから数量を入力できたほうが便利！また、入力専用の画面も用意してあげると親切（管理者でない家族共用利用時を想定）-->
+                    <!--<%#= form_with model: @sub_item, method: :post, local: true do |form| %>-->
+                    <!--<div class="d-flex justify-content-center sub_item_inventory">-->
+                    <!--  <span class="btn btn-secondary down" id="down_<%#= sub_item.id %>">－</span>-->
+                    <!--  <div class="d-flex flex-column">-->
+                    <!--    <h3><%#= form.number_field "sub_item[#{sub_item.id}][inventry]", id: "sub_item_#{sub_item.id}", value: sub_item.inventory, size: "40" %></h3>-->
+                    <!--    <span class="button reset btn btn-danger btn-sm" id="return_<%#= sub_item.id %>">元に戻す</span>-->
+                    <!--  </div>-->
+                    <!--  <span class="btn btn-secondary up" id="up_<%#= sub_item.id %>">＋</span>-->
+                    <!--  <h3><%#= sub_item.unit %></h3>-->
+                    <!--</div>-->
+                    
+                  <h3><%= sub_item.inventory %><%= sub_item.unit %></h3>
+                   
                   </td>
                   <td>
                     <%= link_to "詳細", subitem_path(sub_item.id), class: "btn btn-primary btn-sm" %>

@@ -59,21 +59,21 @@
                 </span>
               </td>
             </tr>
-            <tr>
-              <th>使用期限アラート</th>
-              <td>
-                &emsp;<input type="radio" class="btn-check" id="date_alert_off" value="false" name="sub_item[alert_expiration]" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="date_alert_off">OFF</label>
-                &emsp;<input type="radio" class="btn-check" id="date_alert_on" value="true" name="sub_item[alert_expiration]" autocomplete="off">
-                <label class="btn btn-outline-primary" for="date_alert_on">ON</label><br>
-                  <span id="dayBox">
-                    <div class="ms-1">
-                      &emsp;<%= f.date_field :expiration_days, id: "date" %>になったら通知する
-                    </div>
-                  </span>
-                  </div>
-              </td>
-            </tr>
+            <!--<tr>-->
+            <!--  <th>使用期限アラート</th>-->
+            <!--  <td>-->
+            <!--    &emsp;<input type="radio" class="btn-check" id="date_alert_off" value="false" name="sub_item[alert_expiration]" autocomplete="off" checked>-->
+            <!--    <label class="btn btn-outline-primary" for="date_alert_off">OFF</label>-->
+            <!--    &emsp;<input type="radio" class="btn-check" id="date_alert_on" value="true" name="sub_item[alert_expiration]" autocomplete="off">-->
+            <!--    <label class="btn btn-outline-primary" for="date_alert_on">ON</label><br>-->
+            <!--      <span id="dayBox">-->
+            <!--        <div class="ms-1">-->
+            <!--          &emsp;<%#= f.date_field :expiration_days, id: "date" %>になったら通知する-->
+            <!--        </div>-->
+            <!--      </span>-->
+            <!--      </div>-->
+            <!--  </td>-->
+            <!--</tr>-->
             <tr>
               <th>メモ</th>
               <td>

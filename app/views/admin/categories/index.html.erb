@@ -7,46 +7,45 @@
       </i>
     <% end %>
   <div class="col-10-md">
-
-
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>
-                カテゴリID
-              </th>
-              <th>
-                カテゴリ表示
-              </th>
-              <th>
-                ボタンの色
-              </th>
-              <th>
-              </th>
-            </tr>
-            </thead>
-            <% @categories.each do |category| %>
-            <tr>
-              <td>
-                <%= category.id %>
-              </td>
-              <td>
-                <div class="Button" style="background-color: <%= category.color_code %>">
-                  <%= category.name %>
-                </div>
-              </td>
-              <td>
-                <input type="hidden" id="colorCode" class="colorCode" value="<%= @colorCode %>">
-                  <%= category.color_code %>
-              </td>
-              <td>
-                <%= link_to "編集する", edit_admin_category_path(category.id), class:"btn btn-success" %>
-              </td>
-            </tr>
-            <% end %>
-        </table>
-        <%= paginate @categories, theme: 'bootstrap-5' %>
-      </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              カテゴリID
+            </th>
+            <th>
+              カテゴリ表示
+            </th>
+            <th>
+              ボタンの色
+            </th>
+            <th>
+            </th>
+          </tr>
+          </thead>
+          <% @categories.each do |category| %>
+          <tr>
+            <td>
+              <%= category.id %>
+            </td>
+            <td>
+              <div class="Button" style="background-color: <%= category.color_code %>">
+                <%= category.name %>
+              </div>
+            </td>
+            <td>
+              <input type="hidden" id="colorCode" class="colorCode" value="<%= @colorCode %>">
+                <%= category.color_code %>
+            </td>
+            <td>
+              <%= link_to "編集する", edit_admin_category_path(category.id), class: "btn btn-success" %>
+              <%= link_to "削除する", admin_category_path(category.id), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+      </table>
+      <%= paginate @categories, theme: 'bootstrap-5' %>
+    </div>
   </div>
 </div>

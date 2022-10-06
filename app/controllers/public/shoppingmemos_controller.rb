@@ -9,7 +9,14 @@ class Public::ShoppingmemosController < ApplicationController
     new_sub_item_ids = params[:sub_item_ids]&.map(&:to_i) || []
     #現在のdbにあるサブアイテムid
     SubItem.where(id: new_sub_item_ids).update_all(is_monitoring: true) if new_sub_item_ids.any?
-      redirect_to shoppingmemos_index_path
+    ## 個数を変更する処理
+    # params[:sub_item].each do |item|
+    #   id = item[0]
+    #   num = item[1][:inventry]
+    #   # 数を更新する
+    #   # Item.find(id).update(count: num)
+    # end
+    redirect_to shoppingmemos_index_path
   end
 
   def update_all
@@ -17,8 +24,8 @@ class Public::ShoppingmemosController < ApplicationController
     sub_items_inventories.each do |k, v|
       id = k
       inventory = v.dig(:inventry).to_i
-      sub_item = SubItem.find(id)
-      sub_item.update(inventory: sub_item.inventory + inventory)
+      @sub_item = SubItem.find(id)
+      @sub_item.update(inventory: @sub_item.inventory + inventory)
     end
     redirect_to shopping_finish_path
   end

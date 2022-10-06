@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
+  
 
 #会員用
     root to: 'public/homes#top'
@@ -52,9 +53,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :items
-    resources :categories, only: [:new,:create,:index,:edit,:update]
+    resources :categories
   end
 # ゲストログイン
-  # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+  post '/homes/guest_sign_in', to: 'public/homes#guest_sign_in'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

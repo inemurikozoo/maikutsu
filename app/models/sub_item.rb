@@ -29,7 +29,7 @@ class SubItem < ApplicationRecord
   end
 
   # 期限アラート
-  def create_exp_alert_notification(current_user)
+  def create_exp_alert_notification(user)
     notification = user.notifications.new(
       sub_item_id: id,
       action: "exp_alert",
@@ -42,6 +42,10 @@ class SubItem < ApplicationRecord
   def is_alert_inv(inventory,inv_constant)
     (inventory - inv_constant).to_i
   end
+  
+  # def is_alert_exp(expiration_days)
+  #   expiration_days - Date.today
+  # end
 
   # 今日以前の日付が選択できないようにする記述
   def date_cannot_be_in_the_past
