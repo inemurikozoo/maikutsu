@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
     t.integer "sub_item_id", null: false
     t.string "action", null: false
     t.boolean "checked", default: false
-    t.date "date"
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
