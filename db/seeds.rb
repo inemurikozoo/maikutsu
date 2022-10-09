@@ -17,9 +17,10 @@ Category.create!(
   color_code: "#8eff8e"
   )
 
+#色っぽいピンク
 Category.create!(
   name: "果物",
-  color_code: "#8eff8e"
+  color_code: "#ff69b4"
   )
 
 #朱色系赤
@@ -36,18 +37,19 @@ Category.create!(
 
 #黄色
 Category.create!(
-  name: "卵",
+  name: "卵類",
   color_code: "#ffff8e"
   )
 
+#黄土色っぽい色
 Category.create!(
   name: "穀類",
-  color_code: "#ffff8e"
+  color_code: "#daa520"
   )
-
+#黄色がかった緑色
 Category.create!(
   name: "豆類",
-  color_code: "#ffff8e"
+  color_code: "#adff2f"
   )
 #赤紫
 Category.create!(
@@ -66,9 +68,11 @@ Category.create!(
   name: "調味料",
   color_code: "#ffc68e"
   )
+
+#きなり
 Category.create!(
   name: "粉類",
-  color_code: "#ffc68e"
+  color_code: "#f0e68c"
   )
 
 #ミント色
@@ -88,9 +92,11 @@ Category.create!(
   name: "パン",
   color_code: "#ff8ec6"
   )
+
+#ベージュっぽい色
 Category.create!(
   name: "麺類",
-  color_code: "#ff8ec6"
+  color_code: "#fff8dc"
   )
 
 #水色
@@ -114,7 +120,8 @@ Item.create!(
   preserve_method: "濡らさないように注意。袋やラップ、新聞紙にくるんで野菜室へ。しなびても水へ漬けたら復活！",
   how_to_choose: "葉を落とした切り口がなるべく小さく、ひげ根が少ないもの。太過ぎないもの。",
   limit: "野菜室で約1か月程度",
-  category_id: 1
+  category_id: 1,
+  item_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/にんじん.jpg"), filename:"にんじん.jpg")
   )
 
 Item.create!(
@@ -122,7 +129,8 @@ Item.create!(
   preserve_method: "芯をくりぬき、濡らしたペーパータオルを詰めておく。ポリ袋に入れる。",
   how_to_choose: "芯の切り口が変色していないもの、全体的に色が濃いもののほうが良い。",
   limit: "2週間程度",
-  category_id: 1
+  category_id: 1,
+  item_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/キャベツ.jpg"), filename:"キャベツ.jpg")
   )
 
 Item.create!(
@@ -130,7 +138,8 @@ Item.create!(
   preserve_method: "パックに入れたままとがったほうを下にして保管する。腐る原因となるので洗ってはダメ。",
   how_to_choose: "割ったときにプリっと黄身が盛り上がっているものは鮮度が高い。",
   limit: "採卵後最長で57日。賞味期限は生で食べられる期限。",
-  category_id: 5
+  category_id: 5,
+  item_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/卵.jpg"), filename:"卵.jpg")
   )
 
 Item.create!(
@@ -138,7 +147,7 @@ Item.create!(
   preserve_method: "",
   how_to_choose: "",
   limit: "",
-  category_id: 2
+  category_id: 3
   )
 
 Item.create!(
@@ -146,7 +155,7 @@ Item.create!(
   preserve_method: "",
   how_to_choose: "",
   limit: "",
-  category_id: 2
+  category_id: 3
   )
 
 Item.create!(
@@ -154,7 +163,8 @@ Item.create!(
   preserve_method: "",
   how_to_choose: "",
   limit: "",
-  category_id: 1
+  category_id: 1,
+  item_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/玉ねぎ.jpg"), filename:"玉ねぎ.jpg")
   )
 
 Item.create!(
@@ -162,7 +172,8 @@ Item.create!(
   preserve_method: "",
   how_to_choose: "",
   limit: "",
-  category_id: 8
+  category_id: 11,
+  item_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/牛乳.jpg"), filename:"牛乳.jpg")
   )
 
 Item.create!(
@@ -170,7 +181,7 @@ Item.create!(
   preserve_method: "",
   how_to_choose: "",
   limit: "",
-  category_id: 5
+  category_id: 8
   )
 
 30.times do |n|

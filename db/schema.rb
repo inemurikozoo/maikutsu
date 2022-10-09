@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2022_09_22_034505) do
   end
 
   create_table "sub_items", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "user_id", null: false
+    t.integer "item_id", default: 0, null: false
+    t.integer "user_id", default: 0, null: false
     t.string "subname", default: ""
     t.integer "inventory", default: 0, null: false
     t.boolean "alert_inventory", default: false, null: false
