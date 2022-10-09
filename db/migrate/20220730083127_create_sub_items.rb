@@ -2,8 +2,8 @@ class CreateSubItems < ActiveRecord::Migration[5.2]
   def change
     create_table :sub_items do |t|
 
-      t.integer :item_id,         null: false,    default: ""
-      t.integer :user_id,         null: false,    default: ""
+      t.integer :item_id,         null: false,    default: 0
+      t.integer :user_id,         null: false,    default: 0
       t.string  :subname,                         default: ""
       t.integer :inventory,       null: false,    default: 0
       t.boolean :alert_inventory, null: false,    default: false
