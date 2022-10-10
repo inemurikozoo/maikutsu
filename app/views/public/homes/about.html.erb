@@ -1,7 +1,6 @@
 <div class="container">
   <h1 class="mt-3 text-center bg-info border border-secondary">「まいくつ」とは？？</h1>
   <div class="col-10-md">
-
     <p>「まいくつ」へようこそ！<br>
       『まいくつ』は、食料品や日用品・在庫の残り数量を管理できるサイトです。<br>
     なるべくシンプルに、誰にでも見やすく、使いやすいサイトを目指しました。
@@ -21,32 +20,28 @@
   </p>
   「まいくつ」でどんな機能が使えるか、覗いてみる<br>
     <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class:"btn btn-primary" %>
-
   </div>
-
   <h3 class="mt-3 text-center bg-info border border-secondary">「まいくつ」はこんな人におすすめ</h3>
   <div class="d-flex">
     <div class="card card-deck" style="width: 18rem;">
-      <img src="/assets/images/pose_ukkari_woman.png" class="card-img-top" alt="うっかりした女性">
+      <%= image_tag "/assets/pose_ukkari_woman.png", class:"card-img-top", alt:"うっかりした女性" %>
       <div class="card-body">
         <p class="card-text">「アレを買い忘れた！」「まだあったのに、また買っちゃった！」がたびたび起こる人</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="/assets/images/pose_nayamu_woman.png" class="card-img-top" alt="悩んでいる女性">
+      <img src="/assets/pose_nayamu_woman.png" class="card-img-top" alt="悩んでいる女性">
       <div class="card-body">
         <p class="card-text">ほしいものをメモしてきたけど、売り場を何度も行ったり来たりしてしまう</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="/assets/images/writing03_man.png" class="card-img-top" alt="メモしている男性">
+      <img src="/assets/writing03_man.png" class="card-img-top" alt="メモしている男性">
       <div class="card-body">
         <p class="card-text">誰かに買い物を頼むことが多く、その都度ほしいものをメモして渡している。</p>
       </div>
     </div>
   </div>
-
   <h3 class="mt-3 text-center">こんな悩みも、「まいくつ」なら解決できます！</h3>
-
   </div>
 </div>
