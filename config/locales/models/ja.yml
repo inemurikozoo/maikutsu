@@ -13,3 +13,6 @@ ja:
         subname: こものの名前
         unit: 単位
         item_id: もの
+        inventory: 在庫数
+        inv_constant: 在庫アラート
+        memo: メモ

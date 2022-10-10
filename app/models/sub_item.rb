@@ -9,6 +9,7 @@ class SubItem < ApplicationRecord
   validates :unit, presence: true
   validate :date_cannot_be_in_the_past
   validates :inventory, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :inv_constant, allow_blank: true, numericality: {only_integer: true}
 
   # ショッピングメモモデルを消したので代替え案
   scope :shopping_memos, -> { where(is_monitoring: true) }

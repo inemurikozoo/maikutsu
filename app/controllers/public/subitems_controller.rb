@@ -6,6 +6,9 @@ class Public::SubitemsController < ApplicationController
   def create
     @sub_item = SubItem.new(sub_item_params)
     @sub_item.user_id = current_user.id
+    if @sub_item.inv_constant.blank?
+      @sub_item.inv_constant = 0
+    end  
     if @sub_item.save
       redirect_to subitem_path(@sub_item.id), notice: "こものを作成しました"
     else
