@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  belongs_to :item
+  has_many :items
 
   #カラーコード以外を入力できなくするバリデーション
   validates :color_code, format: {with: /\A#([0-9a-fA-F]{6})\z/}

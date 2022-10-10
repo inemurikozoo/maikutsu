@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
   has_many :sub_items
-  has_many :categories
+  belongs_to :category
   has_one_attached :item_image
 end
