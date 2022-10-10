@@ -14,10 +14,9 @@
         <table class="table">
           <thead>
             <tr>
-              <th>もの（必須）</th>
+              <th>もの（※必須）</th>
               <td>
                 <%= f.collection_select(:item_id, Item.all, :id, :name, prompt: "選択してください") %><br>
-                選択すると保存方法や良いものの選び方等をチェックしやすくなります。
               </td>
             </tr>
             <tr>
@@ -27,7 +26,7 @@
               </td>
             </tr>
             <tr>
-              <th>単位（必須）</th>
+              <th>単位（※必須）</th>
               <td>
                 <%= f.text_field :unit , placeholder: "グラム、本など" %>
               </td>

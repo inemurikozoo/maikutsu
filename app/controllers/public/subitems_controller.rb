@@ -29,14 +29,16 @@ class Public::SubitemsController < ApplicationController
   def update
     @sub_item = SubItem.find(params[:id])
     @inventory = @sub_item.is_alert_inv(@sub_item.inventory,@sub_item.inv_constant)
-    # 消費期限アラートの部分
+   
     # @expiration_days = @sub_item.is_alert_exp(@sub_item.expiration_days)
-    # if @sub_item.alert_inventory && @inventory <= 0
-    #   @sub_item.create_inv_alert_notification(current_user)
-    # end
-    if @sub_item.alert_expiration && @expiration_days <= 1
-      @sub_item.create_exp_alert_notification(current_user)
+     #在庫数アラート
+    if @sub_item.alert_inventory && @inventory <= 0
+      @sub_item.create_inv_alert_notification(current_user)
     end
+    # 消費期限アラートの部分
+    # if @sub_item.alert_expiration && @expiration_days <= 1
+    #   @sub_item.create_exp_alert_notification(current_user)
+    # end
     if @sub_item.update(sub_item_params)
       redirect_to subitem_path(@sub_item.id), notice: "内容を更新しました"
     else
@@ -48,7 +50,7 @@ class Public::SubitemsController < ApplicationController
     sub_item = SubItem.find(params[:id])
     if sub_item.destroy
       redirect_to subitems_path, notice: "こものを削除しました。"
-      
+
     else
       render action:show, notice: "こものの削除に失敗しました。"
     end

@@ -22,27 +22,26 @@ class SubItem < ApplicationRecord
     notification = user.notifications.new(
       sub_item_id: id,
       action: "inv_alert",
-      message: "#{item.name}の在庫数が少なくなっています。",
-      date: Date.today
+      message: "#{item.name}の在庫数が少なくなっています。"
       )
-    notification.save
+    notification.save!
   end
 
   # 期限アラート
-  def create_exp_alert_notification(user)
-    notification = user.notifications.new(
-      sub_item_id: id,
-      action: "exp_alert",
-      message: "#{item.name}の設定された使用期限が到来しましたのでお知らせします。",
-      date: Date.today
-      )
-    notification.save
-  end
+  # def create_exp_alert_notification(user)
+  #   notification = user.notifications.new(
+  #     sub_item_id: id,
+  #     action: "exp_alert",
+  #     message: "#{item.name}の設定された使用期限が到来しましたのでお知らせします。",
+  #     date: Date.today
+  #     )
+  #   notification.save
+  # end
 
   def is_alert_inv(inventory,inv_constant)
     (inventory - inv_constant).to_i
   end
-  
+
   # def is_alert_exp(expiration_days)
   #   expiration_days - Date.today
   # end

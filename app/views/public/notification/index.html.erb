@@ -1,13 +1,13 @@
 <div class="container">
   <h1 class="mt-3 text-center bg-info border border-secondary">通知一覧</h1>
-  <% if @notification.present? %>
+  <% if @notifications.present? %>
     <h5>お知らせが全部で<%= @notifications.count %>件あります</h5>
 
 
     <% @notifications.each do |n| %>
 
     <p>
-      <%= n.date %>
+      <%= n.created_at.strftime('%Y/%m/%d') %>
       <%= n.message %>
       <%= link_to "削除する" , notification_destroy_path(n.id), method: :delete %>
     </p>
