@@ -29,10 +29,10 @@ class Public::SubitemsController < ApplicationController
   def update
     @sub_item = SubItem.find(params[:id])
     @inventory = @sub_item.is_alert_inv(@sub_item.inventory,@sub_item.inv_constant)
-   
+
     # @expiration_days = @sub_item.is_alert_exp(@sub_item.expiration_days)
      #在庫数アラート
-    if @sub_item.alert_inventory && @inventory <= 0
+    if @inventory <= 0
       @sub_item.create_inv_alert_notification(current_user)
     end
     # 消費期限アラートの部分
