@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-3 text-center bg-success border border-secondary">カテゴリ一覧</h1>
+  <h1 class="mt-3 text-center bg-secondary border border-secondary">カテゴリ一覧</h1>
 
     <%= link_to new_admin_category_path, class: "btn btn-outline-secondary" do %>
       <i class="far fa-folder">
@@ -40,7 +40,7 @@
             </td>
             <td>
               <%= link_to "編集する", edit_admin_category_path(category.id), class: "btn btn-success" %>
-              <%= link_to "削除する", admin_category_path(category.id), method: :delete, class: "btn btn-danger" %>
+              <%= link_to "削除する", admin_category_path(category.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
             </td>
           </tr>
           <% end %>
