@@ -19,10 +19,6 @@
 ### 主な利用シーン
 食料品や日用品、備品等の在庫数の把握・管理
 
-
-## 設計書
-
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
